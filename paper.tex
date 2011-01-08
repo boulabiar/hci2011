@@ -1,7 +1,7 @@
 \documentclass{llncs}
 %
 \usepackage{graphicx}
-\DeclareGraphicsExtensions{.png}
+\DeclareGraphicsExtensions{.eps}
 
 \newcommand\ignore[1]{}
 \newcommand{\imagepathext}[5]{%
@@ -10,7 +10,7 @@
 \caption{#5\label{#3}}
 \end{figure}}
 
-\newcommand{\image}[3]{\imagepathext{#1}{FIGURES}{#2}{eps}{#3}}
+\newcommand{\image}[3]{\imagepathext{#1}{pics}{#2}{eps}{#3}}
 \newcommand{\png}[2]{\imagepathext{width=\columnwidth}{pics}{#1}{png}{#2}}
 
 %
@@ -73,6 +73,8 @@ We use this technique to distinguish gesture based on the specific use of it, ge
 We have analyzed some talk-shows in order to extract important gestures being performed.
 (Get the Study from the report + pics + refs)
 
+\png{handg}{Family of supported gestures}
+
 Steps for skin-color based gesture detection
 
 \subsection{Color Manipulations}
@@ -130,8 +132,13 @@ The user can validate clicks using a tempo on another zone.
 4. The multi-touch mode, where we consider the similarities between 2D gestures in a tactile multi-touch context and gestures in the 3D space. To do so, we consider the hands blobs in a manner similar to that of two finger tips in the input of a multi-touch device. Based on that, we can recognize well known multi-touch gestures, such as Drag, Pinch/Zoom and Rotate but applied on our case.
 
 
-\section{Usability analysis and tests}
+\section{Usability analysisn Naturelness and tests}
 
+Naturelness came from the analysis of gestures used in talk shows.
+(gesutures used many times means nature gestures)
+Reverse thinking.
+
+Usability in the context of RevTV ??
 
 % ---- Bibliography ----
 \bibliographystyle{splncs03}
