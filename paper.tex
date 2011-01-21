@@ -49,9 +49,13 @@ There will be two blank lines before and after the Abstract. \dots
 \section{Introduction}
 HCI research focuses more attention than before on enhancing the user experience regarding human-display interaction in order to interact more naturally without the need of clicking on buttons and touching screens. However, in everyday life interaction with home devices having embedded computational power, such as interactive TVs, one does not make benefit of these new interaction paradigms yet. 
 
-Testing Refrences \cite{Gesturecraft} and \cite{skinColorSeg}.
+We present in this paper an approach that could allow the detection and the interpretation of gestures of a TV spectator from a simple and low cost camera. 
+The final objective of this study is to control the animations of an avatar that should be inserted within a TV show beside the presentator or actor [RevTV]
 
-\section{Gesture recognition}
+ref \cite{Gesturecraft} and \cite{skinColorSeg}.
+
+\section{Gesture Semantics and Recognition}
+Semantics of gestures has been studied when analysing the interaction of a user explaining a story. 
 First definition of gestures come from the interaction between two human in a discussion, these type of gestures is used to add more precision on the details and according to recent paper, is made by the same mental region of the speech []. An extended meaning come also from gestures language for dumb people.
 Gesture recognition got the attention of HCI researchers in order to find better ways to talk to the computer. The first one was the Hand Gestural Cursor (Put-That-There[]) aiming to the simplification of the means of communication between human and the machine.
 Since then, the gesture definition included more techniques and got applied on the 2D recognition which is the multi-touch gestures.
@@ -69,13 +73,28 @@ We use this criteria to distinguish between gestures constructed by only one pat
 * Taxonomy based on gesture use:
 We use this technique to distinguish gesture based on the specific use of it, gestures for disabled/dumb people, gestures in talk-shows, gestures in meetings, etc...
 
-\section{Gestures in Talk-shows}
-We have analyzed some talk-shows in order to extract important gestures being performed.
+\section{Gestures Library}
+We have analyzed some talk-shows in order to extract important gestures being performed, and defining a benchmark scenario. 
+We have tried to target the following kinds of gestures in a first step:
+
+\ignore{
 (Get the Study from the report + pics + refs)
+}
 
 \png{handg}{Family of supported gestures}
 
 Steps for skin-color based gesture detection
+
+\section{Technical Aspects}
+Pipeline of the work:
+\png{pipeline}{Pipeline of work components}
+
+\subsection{Used Material}
+Technical aspects of the camera, and used framerate.
+
+\ignore{
+60 Hz, 640x480
+} 
 
 \subsection{Color Manipulations}
 The video processing is based on several modules. First, a basic but adaptive skin color segmentation of a large interval of human skin varieties is performed. 
@@ -99,23 +118,23 @@ We identify the hands and the head by a calibration focused on their first posit
 \subsection{Blob Detection}
 After having the hand and head blobs identified, an efficient tracking method based on the occlusion is used. It re-triggers a phase of calibration when losing the logic of tracking.
 A bounding box distant measure similar to that found in the paper \cite{app06} ("distantBlobTrack"). A distance matrix is also used ('Proximity matrix calculation and "used blob" list initialization') like the one explained in the paper. 
-
+\ignore{
 When the matrix of distance is set up, there are some loops:
 * A loop for detect inactive tracks: those tracks with no blobs near.
 * Detect and create new tracks: those blobs without a track near.
 * A loop to assign blobs to tracks. It makes clusters with blobs that are close and assign them to a track. In this step some tracks could merge in one.
 * At the end, all inactive tracks are checked to delete the old ones.
-
+}
 To better handle blobs, the bounding path of the blobs is simplified to a set of few points when needed, this is used to identify picks for the counter mode.
 
 %Fig. Skin segmentation
 % Testing graphics
 \png{skincolor}{Skin color}
 
-
+\ignore{
 \section{Simplified gesture generation}
 Using these blocks we are able to perturb
-
+}
 
 \section{Recognition modes}
 The output of this video processing is the input of the recognition module, which is based on the blob location on the screen. Four different modes are defined according to the hand locations and the switch between them is based on the grammar:
