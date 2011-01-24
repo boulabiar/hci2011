@@ -52,7 +52,7 @@ using at least 70 and at most 150 words. It will be set in 9-point
 font size and be inset 1.0 cm from the right and left margins.
 There will be two blank lines before and after the Abstract. \dots
 }
-\keywords{natural gesture interaction, low-cost gesture recognition, interactive TV broadcast}
+\keywords{natural gesture interaction, low-cost gesture recognition, interactive TV broadcast, ubiquitous computing}
 \end{abstract}
 %
 
@@ -60,59 +60,94 @@ There will be two blank lines before and after the Abstract. \dots
 HCI research focuses more attention than before on enhancing the user experience regarding human-display interaction in order to interact more naturally without the need of clicking on buttons and touching screens. However, in everyday life interaction with home devices having embedded computational power, such as interactive TVs, one does not make benefit of these new interaction paradigms yet. 
 
 We present in this paper an approach that could allow the detection and the interpretation of gestures of a TV spectator from a simple and low cost camera. 
-The final objective of this study is to control the animations of an avatar that should be inserted within a TV show beside the presentator or actor [RevTV]
+The final objective of this study is to control the animations of an avatar that should be inserted within a TV show beside the presenter or actor [RevTV].
 
-ref \cite{Gesturecraft} and \cite{skinColorSeg}.
+\section{Gesture Semantics}
+First sources of gestures can come from the interaction between two human in a
+discussion, these type of gestures are used to add more precision on the details
+and they are made by the same mental region of the speech \cite{SymbolicGest}.
 
-\section{Gesture Semantics and Recognition}
-Semantics of gestures has been studied when analysing the interaction of a user explaining a story. 
-First definition of gestures come from the interaction between two human in a discussion, these type of gestures is used to add more precision on the details and according to recent paper, is made by the same mental region of the speech []. An extended meaning come also from gestures language for dumb people.
-Gesture recognition got the attention of HCI researchers in order to find better ways to talk to the computer. The first one was the Hand Gestural Cursor (Put-That-There[]) aiming to the simplification of the means of communication between human and the machine.
-Since then, the gesture definition included more techniques and got applied on the 2D recognition which is the multi-touch gestures.
+Semantics of gestures have been also studied by the analysis of the movements of
+a user explaining a story \cite{gestureThought}.
+These gestures are called gesticulations and are always accompanying a speech. 
 
+This semantics can be divided into two parts:
 
-\section{Gestures taxonomies}
-By looking in the possible gestures human can generate, we get a huge amount of possibilities so there is a need for a taxonomy. Many possible taxonomies exist according to the point of view:
-
-* Taxonomy based on the Gesture Creation Space:
-We use this criteria to distinguish between gestures made in the 2D or 3D space.
-
-* Taxonomy based on the number of strokes used in the gesture.
-We use this criteria to distinguish between gestures constructed by only one path and between those using many paths, so the recognition needs to wait for all strokes before the recognition
-
-* Taxonomy based on gesture use:
-We use this technique to distinguish gesture based on the specific use of it, gestures for disabled/dumb people, gestures in talk-shows, gestures in meetings, etc...
+\begin{description}
+ \item[Animation Gestures] used to animate a virtual avatar.
+ \item[Command Gestures] used to launch a specific predefined action.
+\end{description}
 
 
-Nous avons choisi celle-ci, car elle correspond aux besoins que nous avons identifier dans les scenarios d'utilisation de la télé interactive
+\ignore{
+Gesture recognition got the attention of HCI researchers in order to find better
+ways to talk to the computer. The first one was the Hand Gestural Cursor
+(Put-That-There[]) aiming to the simplification of the means of communication
+between human and the machine.
+Since then, the gesture definition included more techniques and got applied on
+the 2D recognition which is the multi-touch gestures.
+}
 
-\section{Gestures Library}
+\subsection{Gestures taxonomies}
+By looking in the possible gestures human can generate\cite{Gesturecraft}, we
+get a huge amount of possibilities so there is a need for a taxonomy.
+Many possible taxonomies exist according to the technical or analytical aspects:
+\begin{description}
+ \item[Gesture Creation Space:] We use this criteria to distinguish between gestures made in the 2D or 3D space.
+ \item[Number of used strokes:] We use this criteria to distinguish between gestures constructed by only one path and between those using many paths, so the recognition needs to wait for all strokes before the recognition
+ \item[Gesture use:] We use this technique to distinguish gesture based on the specific use of it, gestures for disabled people, gestures in talk-shows, gestures in meetings.
+% \item[]
+% \item[]
+\end{description}
+
+%Gesture and Thoughts, page 18
+\begin{description}
+ \item[Gesticulation] is motion that embodies a meaning relatable to the
+accompanying speech. It is made chiefly with the arms and hands but is not
+restricted to these body parts
+ \item[Speech-linked gestures] are parts of sentences themselves, the gesture completes the sentence structure.
+ \item[Emblems] are conventionalized signs, such as thumbs-up or the ring (first
+finger and thumb tips touching, other fingers extended) for ``OK.''
+ \item[Pantomime] is dumb show, a gesture or sequence of gestures conveying a
+narrative line, with a story to tell, produced without speech.
+\end{description}
+
+
+We have chosen to analyze gesticulations as they are the most frequent.
+%, and project them on the technical taxonomies.
+And we have also made our own extraction from Talk-Shows.
+
+%Nous avons choisi celle-ci, car elle correspond aux besoins que nous avons identifier dans les scenarios d'utilisation de la télé interactive
+
+\subsection{Gestures Library}
 We have analyzed some talk-shows in order to extract important gestures being performed, and defining a benchmark scenario. 
 We have tried to target the following kinds of gestures in a first step:
 
-\ignore{
-(Get the Study from the report + pics + refs)
-}
-
 \png{handg}{Family of supported gestures}
+
+The figure.\ref{handg} shows our supported gestures. We provide a movement mode
+used to select directions, then a command mode, then a hand fingers recognition,
+and in the end a cursor movement mode.
+
 \ignore{
 Explanation of the figures
-
 Steps for skin-color based gesture detection
 }
-\section{Technical Aspects}
+
+\newpage
+\section{Technical Work}
 Pipeline of the work:
 \png{pipeline}{Pipeline of work components}
 
 \subsection{Used Materials}
 We have chosen a low-cost camera for our work to be able to integrate it with other components in the future.
-The PS3Eye camera matched our expectations with a 640x480 resolution combined with a 60 Frame-per-second.
+The PS3Eye camera matched our expectations with a 640x480 resolution combined with a 60 frames-per-second capability.
 
 \ignore{
 } 
 
 \subsection{Color Manipulations}
-The video processing is based on several modules. First, a basic but adaptive skin color segmentation of a large interval of human skin varieties is performed. 
+The video processing is based on several modules. First, a basic but adaptive skin color segmentation of a large interval of human skin varieties is performed \cite{skinColorSeg}.
 We do an histogram tuning to better enlarge the colors to all the space available.
 Then we transform the color space from BGR to YCrCb because it’s the one with the less parameters where we can do easy segmentation. The transformation from these two color spaces is chosen also because it’s linear []
 
@@ -151,7 +186,7 @@ To better handle blobs, the bounding path of the blobs is simplified to a set of
 Using these blocks we are able to perturb
 }
 
-\section{Recognition modes}
+\section{Gestural informations and Recognition modes}
 The output of this video processing is the input of the recognition module, which is based on the blob location on the screen. Four different modes are defined according to the hand locations and the switch between them is based on the grammar:
 
 1. The movement mode:
@@ -161,19 +196,38 @@ it is activated when two hands are close to each other, so that the user selects
 it is used to control a cursor to select something in an arbitrary place on the screen. With this mode, we only get the input from a sub zone in the screen and map it to the full screen. We use it in a similar way to a computer touchpad.
 The user can validate clicks using a tempo on another zone.
 
-3. The counter mode: counts the number of fingers in a pre-selected hand (the left and right hand are automatically discriminated) by counting the peaks in the simplified contour of the blob. This mode can again be used in games for kids.
+3. The counter mode: counts the number of fingers in a preselected hand (the left and right hand are automatically discriminated) by counting the peaks in the simplified contour of the blob. This mode can again be used in games for kids.
 
 4. The multi-touch mode, where we consider the similarities between 2D gestures in a tactile multi-touch context and gestures in the 3D space. To do so, we consider the hands blobs in a manner similar to that of two finger tips in the input of a multi-touch device. Based on that, we can recognize well known multi-touch gestures, such as Drag, Pinch/Zoom and Rotate but applied on our case.
 
+We have used four modes a first core with the possibility to add more sub-gestures in the future.
+This core will be used to control a children game having to select, choose, and answer basic questions.
+We have stick to that scenario to produce these gestures. 
 
-\section{Usability analysisn Naturelness and tests}
+-- add screenshot of the work --
 
-Naturelness came from the analysis of gestures used in talk shows.
+\section{Usability and Naturalness in an ubiquitous environment}
+
+The usability of our system should be compared to other system in an ubiquitous
+environment. In such case, we don't have a full PC where we need to work as in
+the front of a computer, but in the front of a TV.
+The gestures in such environment, and specially for children game scenario,
+are made for a short period of time, and doesn't require a good usability,
+even if we can recognize gestures in real-time.
+
+The Naturalness of gestures is supported by the analysis of gestures to be
+supported and the choice of gesticulation.
+Gesticulation are the most common gestures, so they inherit from this their
+ability to be produced with less complication.
+
+-- to be extended --
+
+\ignore{
+Naturalness came from the analysis of gestures used in talk shows.
 (gestures used many times means nature gestures)
 Reverse thinking.
-
 Usability in the context of RevTV ??
-
+}
 % ---- Bibliography ----
 \bibliographystyle{splncs03}
 \bibliography{paper}
