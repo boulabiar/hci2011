@@ -38,10 +38,20 @@ VALORIA, University of Bretagne-Sud, France
 \maketitle
 
 \begin{abstract}
+The search for new simplified interaction techniques is always treated as a
+manner to advance the communication with intelligent devices.
+In this paper we present our work to generate intelligent TVs modules capable of
+recognizing human gestures through a low-cost camera.
+We recognize gestures by the tracking of human skin blobs and analyzing the 
+corresponding movements to control a TV in an ubiquitous computing environment.
+Then we present a new gesture library generated after an analysis of TV's Talk-shows.
+
+\ignore{
 The abstract should summarize the contents of the paper
 using at least 70 and at most 150 words. It will be set in 9-point
 font size and be inset 1.0 cm from the right and left margins.
 There will be two blank lines before and after the Abstract. \dots
+}
 \keywords{natural gesture interaction, low-cost gesture recognition, interactive TV broadcast}
 \end{abstract}
 %
@@ -62,16 +72,19 @@ Since then, the gesture definition included more techniques and got applied on t
 
 
 \section{Gestures taxonomies}
-By looking in the possible gestures human can generate, we get a huge amount of possibilities so there is a need for a taxonomy. Many possible taxonomies exists according to the point of view:
+By looking in the possible gestures human can generate, we get a huge amount of possibilities so there is a need for a taxonomy. Many possible taxonomies exist according to the point of view:
 
 * Taxonomy based on the Gesture Creation Space:
 We use this criteria to distinguish between gestures made in the 2D or 3D space.
 
 * Taxonomy based on the number of strokes used in the gesture.
-We use this criteria to distinguish between gestures constructed by only one path and between those using many path, so the recognition needs to wait for all strokes before the recognition
+We use this criteria to distinguish between gestures constructed by only one path and between those using many paths, so the recognition needs to wait for all strokes before the recognition
 
 * Taxonomy based on gesture use:
 We use this technique to distinguish gesture based on the specific use of it, gestures for disabled/dumb people, gestures in talk-shows, gestures in meetings, etc...
+
+
+Nous avons choisi celle-ci, car elle correspond aux besoins que nous avons identifier dans les scenarios d'utilisation de la télé interactive
 
 \section{Gestures Library}
 We have analyzed some talk-shows in order to extract important gestures being performed, and defining a benchmark scenario. 
@@ -82,18 +95,20 @@ We have tried to target the following kinds of gestures in a first step:
 }
 
 \png{handg}{Family of supported gestures}
+\ignore{
+Explanation of the figures
 
 Steps for skin-color based gesture detection
-
+}
 \section{Technical Aspects}
 Pipeline of the work:
 \png{pipeline}{Pipeline of work components}
 
-\subsection{Used Material}
-Technical aspects of the camera, and used framerate.
+\subsection{Used Materials}
+We have chosen a low-cost camera for our work to be able to integrate it with other components in the future.
+The PS3Eye camera matched our expectations with a 640x480 resolution combined with a 60 Frame-per-second.
 
 \ignore{
-60 Hz, 640x480
 } 
 
 \subsection{Color Manipulations}
@@ -154,7 +169,7 @@ The user can validate clicks using a tempo on another zone.
 \section{Usability analysisn Naturelness and tests}
 
 Naturelness came from the analysis of gestures used in talk shows.
-(gesutures used many times means nature gestures)
+(gestures used many times means nature gestures)
 Reverse thinking.
 
 Usability in the context of RevTV ??

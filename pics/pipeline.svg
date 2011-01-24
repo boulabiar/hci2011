@@ -281,7 +281,7 @@
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="141.43793"
+       x="142.42778"
        y="108.59585"
        id="text3791-0-8-8-8"
        sodipodi:linespacing="125%"
@@ -289,15 +289,15 @@
        inkscape:export-xdpi="130.40257"
        inkscape:export-ydpi="130.40257"><tspan
          sodipodi:role="line"
-         x="141.43793"
+         x="142.42778"
          y="108.59585"
          style="font-size:16px;text-align:center;text-anchor:middle"
          id="tspan3914-3">Colors</tspan><tspan
          sodipodi:role="line"
-         x="141.43793"
-         y="128.59584"
+         x="142.42778"
+         y="128.59586"
          style="font-size:16px;text-align:center;text-anchor:middle"
-         id="tspan3393">Manipulations</tspan></text>
+         id="tspan3032">Transformations</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
@@ -325,7 +325,7 @@
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
        x="719.52521"
-       y="150.54451"
+       y="154.54451"
        id="text3791-4-5"
        sodipodi:linespacing="125%"
        inkscape:export-filename="/home/boulabiar/Documents/hciiP/hci2011/pics/pipeline.png"
@@ -333,12 +333,12 @@
        inkscape:export-ydpi="130.40257"><tspan
          sodipodi:role="line"
          x="719.52521"
-         y="150.54451"
+         y="154.54451"
          style="font-size:16px;text-align:center;text-anchor:middle"
          id="tspan3386-6">Gestural</tspan><tspan
          sodipodi:role="line"
          x="719.52521"
-         y="170.54451"
+         y="174.54451"
          style="font-size:16px;text-align:center;text-anchor:middle"
          id="tspan3586">Informations</tspan></text>
     <path
@@ -350,13 +350,13 @@
        sodipodi:rx="25"
        sodipodi:ry="25"
        d="m 52.857143,133.79076 a 25,25 0 1 1 -49.9999996,0 25,25 0 1 1 49.9999996,0 z"
-       transform="translate(686.89131,-28.67487)"
+       transform="translate(686.89131,-24.67487)"
        inkscape:export-filename="/home/boulabiar/Documents/hciiP/hci2011/pics/pipeline.png"
        inkscape:export-xdpi="130.40257"
        inkscape:export-ydpi="130.40257" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1.98526716;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#DotM);marker-end:url(#Arrow2Lend)"
-       d="m 673.82273,106.04446 48.44791,0"
+       d="m 673.82273,110.04446 48.44791,0"
        id="path3987-8-8"
        inkscape:connector-curvature="0"
        inkscape:export-filename="/home/boulabiar/Documents/hciiP/hci2011/pics/pipeline.png"
