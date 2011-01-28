@@ -39,8 +39,8 @@ VALORIA, University of Bretagne-Sud, France
 
 \begin{abstract}
 The search for new simplified interaction techniques is always treated as a
-manner to advance the communication with intelligent devices.
-In this paper we present our work to generate intelligent TVs modules capable of
+manner to advance the communication with interactive devices.
+In this paper we present our work to generate interactive TVs modules capable of
 recognizing human gestures through a low-cost camera.
 We recognize gestures by the tracking of human skin blobs and analyzing the 
 corresponding movements to control a TV in an ubiquitous computing environment.
@@ -65,7 +65,7 @@ The final objective of this study is to control the animations of an avatar that
 \section{Gesture Semantics}
 First sources of gestures can come from the interaction between two human in a
 discussion, these type of gestures are used to add more precision on the details
-and they are made by the same mental region of the speech \cite{SymbolicGest}.
+and they are made by the same auditory areas of the cortex \cite{SymbolicGest}.
 
 Semantics of gestures have been also studied by the analysis of the movements of
 a user explaining a story \cite{gestureThought}.
@@ -89,22 +89,21 @@ the 2D recognition which is the multi-touch gestures.
 }
 
 \subsection{Gestures taxonomies}
-By looking in the possible gestures human can generate\cite{Gesturecraft}, we
+By looking in the possible gestures human can generate \cite{Gesturecraft}, we
 get a huge amount of possibilities so there is a need for a taxonomy.
 Many possible taxonomies exist according to the technical or analytical aspects:
 \begin{description}
  \item[Gesture Creation Space:] We use this criteria to distinguish between gestures made in the 2D or 3D space.
  \item[Number of used strokes:] We use this criteria to distinguish between gestures constructed by only one path and between those using many paths, so the recognition needs to wait for all strokes before the recognition
- \item[Gesture use:] We use this technique to distinguish gesture based on the specific use of it, gestures for disabled people, gestures in talk-shows, gestures in meetings.
+ \item[Gesture use:] We use this criteria to distinguish gesture based on the specific use of it, gestures for disabled people, gestures in talk-shows, gestures in meetings.
 % \item[]
 % \item[]
 \end{description}
-
 %Gesture and Thoughts, page 18
 \begin{description}
- \item[Gesticulation] is motion that embodies a meaning relatable to the
+ \item[Gesticulation] is motion that embodies a meaning reliable to the
 accompanying speech. It is made chiefly with the arms and hands but is not
-restricted to these body parts
+restricted to these body parts.
  \item[Speech-linked gestures] are parts of sentences themselves, the gesture completes the sentence structure.
  \item[Emblems] are conventionalized signs, such as thumbs-up or the ring (first
 finger and thumb tips touching, other fingers extended) for ``OK.''
@@ -126,7 +125,7 @@ And we have also made our own extraction from Talk-Shows.
 We have analyzed some talk-shows in order to extract important gestures being performed, and defining a benchmark scenario. 
 %We have tried to target the following kinds of gestures in a first step.
 
-The figure.\ref{handg} shows our supported gestures. We provide a movement mode
+The figure\ref{handg} shows our supported gestures. We provide a movement mode
 used to select directions, then a command mode, then a hand fingers recognition,
 and in the end a cursor movement mode.
 
@@ -146,14 +145,14 @@ The PS3Eye camera matched our expectations with a 640x480 resolution combined wi
 \ignore{
 } 
 
-\subsection{Color Manipulations}
+\subsection{Color Transformations}
 The video processing is based on several modules. First, a basic but adaptive skin color segmentation of a large interval of human skin varieties is performed \cite{skinColorSeg}.
 We do an histogram tuning to better enlarge the colors to all the space available.
-Then we transform the color space from BGR to YCrCb because it’s the one with the less parameters where we can do easy segmentation. The transformation from these two color spaces is chosen also because it’s linear []
+Then we transform the color space from BGR to YCrCb because it’s the one with the less parameters where we can do easy segmentation. The transformation from these two color spaces is chosen also because it’s linear \cite{skinColorSeg}.
 
 \begin{center}
-\begin{tabular}{c|c|c|c|c}
-\textbf{Space} & RGB & HSV & YCrCb & CIE Lab\\
+\begin{tabular}{|c|c|c|c|c|}
+\textbf{Space} & BGR & HSV & YCrCb & CIE Lab\\
   & R>95, G>40, B>20, & H[0.4 .. 0.7] & Cb[77 .. 127] & C[0 .. 65] \\
 \textbf{Param.} & Max\{R,G,B\}-Min\{R,G,B\} < 15 & S[0.15 .. 0.75] & Cr[133 .. 173] & I[0 .. 14] \\
   & abs(R-G) > 15, R > G, R>B & V[0.35 .. 0.95] & &
@@ -161,8 +160,9 @@ Then we transform the color space from BGR to YCrCb because it’s the one with 
 \end{center}
 
 \subsection{Input Filtering}
-Then, a morphological kernel is applied to smooth the results, this is necessary to clean the image from lonely pixels and holes inside skin zones.
-Each blob is labeled in linear time we use the algorithm [], which requires 1 to 4 passes to recognize all blobs with their bounding path.
+Then, a morphological kernel is applied to smooth the results, this is necessary
+to clean the image from lonely pixels and holes inside skin zones.
+Each blob is labeled in linear time we use the algorithm \cite{CompLabeling} , which requires 1 to 4 passes to recognize all blobs with their bounding path.
 We identify the hands and the head by a calibration focused on their first position in the screen. We identify them and add a tag to their respective blobs.
 
 \subsection{Blob Detection}
@@ -200,7 +200,7 @@ The user can validate clicks using a tempo on another zone.
 
 4. The multi-touch mode, where we consider the similarities between 2D gestures in a tactile multi-touch context and gestures in the 3D space. To do so, we consider the hands blobs in a manner similar to that of two finger tips in the input of a multi-touch device. Based on that, we can recognize well known multi-touch gestures, such as Drag, Pinch/Zoom and Rotate but applied on our case.
 
-We have used four modes a first core with the possibility to add more sub-gestures in the future.
+We have used four modes in a first core with the possibility to add more sub-gestures in the future.
 This core will be used to control a children game having to select, choose, and answer basic questions.
 We have stick to that scenario to produce these gestures. 
 
@@ -221,6 +221,8 @@ Gesticulation are the most common gestures, so they inherit from this their
 ability to be produced with less complication.
 
 -- to be extended --
+
+\section{}
 
 \ignore{
 Naturalness came from the analysis of gestures used in talk shows.
