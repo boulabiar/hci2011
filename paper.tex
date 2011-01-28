@@ -5,13 +5,14 @@
 
 \newcommand\ignore[1]{}
 \newcommand{\imagepathext}[5]{%
-\begin{figure}[hbtp]
+\begin{figure}[!htbp]
 \hfil\includegraphics[#1]{#2/#3.#4}\hfil
 \caption{#5\label{#3}}
 \end{figure}}
 
 \newcommand{\image}[3]{\imagepathext{#1}{pics}{#2}{eps}{#3}}
 \newcommand{\png}[2]{\imagepathext{width=\columnwidth}{pics}{#1}{png}{#2}}
+
 
 %
 
@@ -60,7 +61,12 @@ There will be two blank lines before and after the Abstract. \dots
 HCI research focuses more attention than before on enhancing the user experience regarding human-display interaction in order to interact more naturally without the need of clicking on buttons and touching screens. However, in everyday life interaction with home devices having embedded computational power, such as interactive TVs, one does not make benefit of these new interaction paradigms yet. 
 
 We present in this paper an approach that could allow the detection and the interpretation of gestures of a TV spectator from a simple and low cost camera. 
-The final objective of this study is to control the animations of an avatar that should be inserted within a TV show beside the presenter or actor [RevTV].
+%The final objective of this study is to control the animations of an avatar that should be inserted within a TV show beside the presenter or actor [RevTV].
+One major scenario why we rely on corresponds to educational games here a pupil
+could control his/her avatar in a program led by a ``real'' TV animator.
+This kind of scenarios needs to be able to manage commands interaction
+like pointing, selecting and moving as well as natural gesture animation.
+
 
 \section{Gesture Semantics}
 First sources of gestures can come from the interaction between two human in a
@@ -91,7 +97,9 @@ the 2D recognition which is the multi-touch gestures.
 \subsection{Gestures taxonomies}
 By looking in the possible gestures human can generate \cite{Gesturecraft}, we
 get a huge amount of possibilities so there is a need for a taxonomy.
-Many possible taxonomies exist according to the technical or analytical aspects:
+%Many possible taxonomies exist according to the technical or analytical aspects:
+In order to describe and analyse each gesture, we can rely on the following
+aspects:
 \begin{description}
  \item[Gesture Creation Space:] We use this criteria to distinguish between gestures made in the 2D or 3D space.
  \item[Number of used strokes:] We use this criteria to distinguish between gestures constructed by only one path and between those using many paths, so the recognition needs to wait for all strokes before the recognition
@@ -100,34 +108,39 @@ Many possible taxonomies exist according to the technical or analytical aspects:
 % \item[]
 \end{description}
 %Gesture and Thoughts, page 18
+According to McNail \cite{gestureThought}, it is possible and useful to
+distinguish between these gestures:
 \begin{description}
  \item[Gesticulation] is motion that embodies a meaning reliable to the
 accompanying speech. It is made chiefly with the arms and hands but is not
 restricted to these body parts.
- \item[Speech-linked gestures] are parts of sentences themselves, the gesture completes the sentence structure.
+ \item[Speech-linked gestures] are parts of sentences themselves, the gesture
+completes the sentence structure.
  \item[Emblems] are conventionalized signs, such as thumbs-up or the ring (first
 finger and thumb tips touching, other fingers extended) for ``OK.''
  \item[Pantomime] is dumb show, a gesture or sequence of gestures conveying a
 narrative line, with a story to tell, produced without speech.
 \end{description}
 
-
-We have chosen to analyze gesticulations as they are the most frequent.
+In our work, we focalize on emblems commands and gesticulations.
+%We have chosen to analyze gesticulations as they are the most frequent.
 %, and project them on the technical taxonomies.
-And we have also made our own extraction from Talk-Shows.
-
+%And we have also made our own extraction from Talk-Shows.
 %Nous avons choisi celle-ci, car elle correspond aux besoins que nous avons identifier dans les scenarios d'utilisation de la télé interactive
 
 \subsection{Gestures Library}
 
-\png{handg}{Family of supported gestures}
-
-We have analyzed some talk-shows in order to extract important gestures being performed, and defining a benchmark scenario. 
+In order to identify relevant gestures we have analyzed some talk-shows in order to extract important gestures being performed, and defining a benchmark scenario. 
 %We have tried to target the following kinds of gestures in a first step.
+
+\png{handg}{Family of supported gestures}
 
 The figure\ref{handg} shows our supported gestures. We provide a movement mode
 used to select directions, then a command mode, then a hand fingers recognition,
 and in the end a cursor movement mode.
+\pagebreak 
+We have selected to support 4 basic gestures to be extended depending on the
+context fulfilling the requirements of a benchmark scenario.
 
 \ignore{
 Explanation of the figures
@@ -135,12 +148,15 @@ Steps for skin-color based gesture detection
 }
 
 \section{Technical Work}
+
 Pipeline of the work:
+
 \png{pipeline}{Pipeline of work components}
 
 \subsection{Used Materials}
 We have chosen a low-cost camera for our work to be able to integrate it with other components in the future.
 The PS3Eye camera matched our expectations with a 640x480 resolution combined with a 60 frames-per-second capability.
+This camera costs about 40\$ which is a reasonable price for a potential market deployment.
 
 \ignore{
 } 
@@ -151,11 +167,14 @@ We do an histogram tuning to better enlarge the colors to all the space availabl
 Then we transform the color space from BGR to YCrCb because it’s the one with the less parameters where we can do easy segmentation. The transformation from these two color spaces is chosen also because it’s linear \cite{skinColorSeg}.
 
 \begin{center}
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
 \textbf{Space} & BGR & HSV & YCrCb & CIE Lab\\
-  & R>95, G>40, B>20, & H[0.4 .. 0.7] & Cb[77 .. 127] & C[0 .. 65] \\
+\hline
+ & R>95, G>40, B>20, & H[0.4 .. 0.7] & Cb[77 .. 127] & C[0 .. 65] \\
 \textbf{Param.} & Max\{R,G,B\}-Min\{R,G,B\} < 15 & S[0.15 .. 0.75] & Cr[133 .. 173] & I[0 .. 14] \\
-  & abs(R-G) > 15, R > G, R>B & V[0.35 .. 0.95] & &
+ & abs(R-G) > 15, R > G, R>B & V[0.35 .. 0.95] & & \\
+\hline
 \end{tabular}
 \end{center}
 
@@ -165,7 +184,7 @@ to clean the image from lonely pixels and holes inside skin zones.
 Each blob is labeled in linear time we use the algorithm \cite{CompLabeling} , which requires 1 to 4 passes to recognize all blobs with their bounding path.
 We identify the hands and the head by a calibration focused on their first position in the screen. We identify them and add a tag to their respective blobs.
 
-\subsection{Blob Detection}
+\subsection{Blobs Detection}
 After having the hand and head blobs identified, an efficient tracking method based on the occlusion is used. It re-triggers a phase of calibration when losing the logic of tracking.
 A bounding box distant measure similar to that found in the paper \cite{app06} ("distantBlobTrack"). A distance matrix is also used ('Proximity matrix calculation and "used blob" list initialization') like the one explained in the paper. 
 \ignore{
@@ -205,6 +224,16 @@ This core will be used to control a children game having to select, choose, and 
 We have stick to that scenario to produce these gestures. 
 
 -- add screenshot of the work --
+%\pngl{point}{simplify}{List of modes}
+
+\begin{figure}[!htb]
+\centering
+  \includegraphics[width=0.45\textwidth]{./pics/point.png}
+  \includegraphics[width=0.4\textwidth]{./pics/simplify.png}
+  \caption{List of modes}
+%  \label{fig:Gestes}
+\end{figure}
+
 
 \section{Usability and Naturalness in an ubiquitous environment}
 
@@ -222,7 +251,13 @@ ability to be produced with less complication.
 
 -- to be extended --
 
-\section{}
+\section{System integration of this interaction and future work}
+--
+
+Gesture + facial recog.
+Voice recognition
+Haptic 
+--
 
 \ignore{
 Naturalness came from the analysis of gestures used in talk shows.
