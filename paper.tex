@@ -41,11 +41,11 @@ VALORIA, University of Bretagne-Sud, France
 \begin{abstract}
 The search for new simplified interaction techniques is always treated as a
 manner to advance the communication with interactive devices.
-In this paper we present our work to generate interactive TVs modules capable of
+In this paper, we present our work to generate interactive TVs modules capable of
 recognizing human gestures through a low-cost camera.
 We recognize gestures by the tracking of human skin blobs and analyzing the 
 corresponding movements to control a TV in an ubiquitous computing environment.
-Then we present a new gesture library generated after an analysis of TV's Talk-shows.
+Then, we present a new gesture library generated after an analysis of TV's Talk-shows.
 
 \ignore{
 The abstract should summarize the contents of the paper
@@ -95,8 +95,8 @@ the 2D recognition which is the multi-touch gestures.
 }
 
 \subsection{Gestures taxonomies}
-By looking in the possible gestures human can generate \cite{Gesturecraft}, we
-get a huge amount of possibilities so there is a need for a taxonomy.
+By looking at the possible gestures human can generate \cite{Gesturecraft}, we
+get a huge amount of possibilities. So, there is a need for a taxonomy.
 %Many possible taxonomies exist according to the technical or analytical aspects:
 In order to describe and analyse each gesture, we can rely on the following
 aspects:
@@ -111,7 +111,7 @@ aspects:
 According to McNail \cite{gestureThought}, it is possible and useful to
 distinguish between these gestures:
 \begin{description}
- \item[Gesticulation] is motion that embodies a meaning reliable to the
+ \item[Gesticulation] is a motion that embodies a meaning reliable to the
 accompanying speech. It is made chiefly with the arms and hands but is not
 restricted to these body parts.
  \item[Speech-linked gestures] are parts of sentences themselves, the gesture
@@ -135,9 +135,9 @@ In order to identify relevant gestures we have analyzed some talk-shows in order
 
 \png{handg}{Family of supported gestures}
 
-The figure\ref{handg} shows our supported gestures. We provide a movement mode
+Figure\ref{handg} shows our supported gestures. We provide a movement mode
 used to select directions, then a command mode, then a hand fingers recognition,
-and in the end a cursor movement mode.
+and, finally, a cursor movement mode.
 \pagebreak 
 We have selected to support 4 basic gestures to be extended depending on the
 context fulfilling the requirements of a benchmark scenario.
@@ -154,17 +154,18 @@ Pipeline of the work:
 \png{pipeline}{Pipeline of work components}
 
 \subsection{Used Materials}
-We have chosen a low-cost camera for our work to be able to integrate it with other components in the future.
+We have chosen a low-cost camera for our work that can be integrated with other components in the future.
 The PS3Eye camera matched our expectations with a 640x480 resolution combined with a 60 frames-per-second capability.
-This camera costs about 40\$ which is a reasonable price for a potential market deployment.
+This camera costs about 40\$, which is a reasonable price for a potential market deployment.
 
 \ignore{
 } 
 
 \subsection{Color Transformations}
 The video processing is based on several modules. First, a basic but adaptive skin color segmentation of a large interval of human skin varieties is performed \cite{skinColorSeg}.
-We do an histogram tuning to better enlarge the colors to all the space available.
-Then we transform the color space from BGR to YCrCb because it’s the one with the less parameters where we can do easy segmentation. The transformation from these two color spaces is chosen also because it’s linear \cite{skinColorSeg}.
+We also use a histogram equalisation technique to better enlarge the colors to all the space available.
+Then we transform the color space from BGR to YCrCb, as it’s the most adapted one to skin segmentation
+Moreover, the corresponding transformation is linear \cite{skinColorSeg}.
 
 \begin{center}
 \begin{tabular}{|l|c|c|c|c|}
@@ -179,9 +180,9 @@ Then we transform the color space from BGR to YCrCb because it’s the one with 
 \end{center}
 
 \subsection{Input Filtering}
-Then, a morphological kernel is applied to smooth the results, this is necessary
-to clean the image from lonely pixels and holes inside skin zones.
-Each blob is labeled in linear time we use the algorithm \cite{CompLabeling} , which requires 1 to 4 passes to recognize all blobs with their bounding path.
+During the next step, a morphological kernel is applied to smooth the results, this is necessary
+to clean the image from isolated pixels and holes inside skin zones.
+Each blob is labeled in linear time using the algorithm described in \cite{CompLabeling} , which requires 1 to 4 passes to recognize all blobs with their bounding path.
 We identify the hands and the head by a calibration focused on their first position in the screen. We identify them and add a tag to their respective blobs.
 
 \subsection{Blobs Detection}
@@ -194,7 +195,7 @@ When the matrix of distance is set up, there are some loops:
 * A loop to assign blobs to tracks. It makes clusters with blobs that are close and assign them to a track. In this step some tracks could merge in one.
 * At the end, all inactive tracks are checked to delete the old ones.
 }
-To better handle blobs, the bounding path of the blobs is simplified to a set of few points when needed, this is used to identify picks for the counter mode.
+To better handle blobs, the bounding path of the blobs is simplified to a set of few points when needed. This is used to identify picks for the counter mode.
 
 %Fig. Skin segmentation
 % Testing graphics
@@ -206,7 +207,7 @@ Using these blocks we are able to perturb
 }
 
 \section{Gestural informations and Recognition modes}
-The output of this video processing is the input of the recognition module, which is based on the blob location on the screen. Four different modes are defined according to the hand locations and the switch between them is based on the grammar:
+The output of this video processing is the input of the recognition module, which is based on the blob location on the screen. Four different modes are defined according to the hand locations. The switch between them is based on the following grammar:
 
 1. The movement mode:
 it is activated when two hands are close to each other, so that the user selects between 4 directions. This mode can be used as input for games to select between the directions.
