@@ -41,19 +41,16 @@ VALORIA, University of Bretagne-Sud, France
 \begin{abstract}
 The search for new simplified interaction techniques is always treated as a
 manner to advance the communication with interactive devices.
-In this paper, we present our work to generate interactive TVs modules capable of
-recognizing human gestures through a low-cost camera.
+In this paper, we present our work to generate interactive TVs modules capable
+of recognizing human gestures through the PS3Eye low-cost camera.
 We recognize gestures by the tracking of human skin blobs and analyzing the 
 corresponding movements to control a TV in an ubiquitous computing environment.
-Then, we present a new gesture library generated after an analysis of TV's Talk-shows.
+We also present a new free gestures icons library created to allow easy
+representation and diagramming.
+%after an analysis of TV's Talk-shows.
 
-\ignore{
-The abstract should summarize the contents of the paper
-using at least 70 and at most 150 words. It will be set in 9-point
-font size and be inset 1.0 cm from the right and left margins.
-There will be two blank lines before and after the Abstract. \dots
-}
-\keywords{natural gesture interaction, low-cost gesture recognition, interactive TV broadcast, ubiquitous computing}
+\keywords{natural gesture interaction, low-cost gesture recognition, interactive
+TV broadcast, ubiquitous computing}
 \end{abstract}
 %
 
@@ -62,8 +59,8 @@ HCI research focuses more attention than before on enhancing the user experience
 
 We present in this paper an approach that could allow the detection and the interpretation of gestures of a TV spectator from a simple and low cost camera. 
 %The final objective of this study is to control the animations of an avatar that should be inserted within a TV show beside the presenter or actor [RevTV].
-One major scenario why we rely on corresponds to educational games here a pupil
-could control his/her avatar in a program led by a ``real'' TV animator.
+One major scenario that we rely on, corresponds to educational games where a pupil
+controls his/her avatar in a program led by a ``real'' TV animator.
 This kind of scenarios needs to be able to manage commands interaction
 like pointing, selecting and moving as well as natural gesture animation.
 
@@ -78,7 +75,6 @@ a user explaining a story \cite{gestureThought}.
 These gestures are called gesticulations and are always accompanying a speech. 
 
 This semantics can be divided into two parts:
-
 \begin{description}
  \item[Animation Gestures] used to animate a virtual avatar.
  \item[Command Gestures] used to launch a specific predefined action.
@@ -96,20 +92,19 @@ the 2D recognition which is the multi-touch gestures.
 
 \subsection{Gestures taxonomies}
 By looking at the possible gestures human can generate \cite{Gesturecraft}, we
-get a huge amount of possibilities. So, there is a need for a taxonomy.
+get a huge amount of possibilities which depend on the context and on the type.
+%So, there is a need for a taxonomy.
 %Many possible taxonomies exist according to the technical or analytical aspects:
-In order to describe and analyse each gesture, we can rely on the following
-aspects:
-\begin{description}
+%In order to describe and analyse each gesture, we can rely on the following aspects:
+\ignore{\begin{description}
  \item[Gesture Creation Space:] We use this criteria to distinguish between gestures made in the 2D or 3D space.
  \item[Number of used strokes:] We use this criteria to distinguish between gestures constructed by only one path and between those using many paths, so the recognition needs to wait for all strokes before the recognition
- \item[Gesture use:] We use this criteria to distinguish gesture based on the specific use of it, gestures for disabled people, gestures in talk-shows, gestures in meetings.
-% \item[]
-% \item[]
-\end{description}
+ \item[Gesture context:] We use this criteria to distinguish gesture based on the specific use of it, gestures for disabled people, gestures in talk-shows, gestures in meetings.
+\end{description}}
 %Gesture and Thoughts, page 18
 According to McNail \cite{gestureThought}, it is possible and useful to
-distinguish between these gestures:
+distinguish between these gestures and a possbile taxonomy can provide us these
+types:
 \begin{description}
  \item[Gesticulation] is a motion that embodies a meaning reliable to the
 accompanying speech. It is made chiefly with the arms and hands but is not
@@ -130,7 +125,10 @@ In our work, we focalize on emblems commands and gesticulations.
 
 \subsection{Gestures Library}
 
-In order to identify relevant gestures we have analyzed some talk-shows in order to extract important gestures being performed, and defining a benchmark scenario. 
+In order to identify relevant gestures we have analyzed some talk-shows in order
+to extract most frequent gestures being performed.
+According to our scenario of use in the context of Interacrive TV.
+%and defining a benchmark scenario.
 %We have tried to target the following kinds of gestures in a first step.
 
 \png{handg}{Family of supported gestures}
@@ -142,14 +140,9 @@ and, finally, a cursor movement mode.
 We have selected to support 4 basic gestures to be extended depending on the
 context fulfilling the requirements of a benchmark scenario.
 
-\ignore{
-Explanation of the figures
-Steps for skin-color based gesture detection
-}
-
 \section{Technical Work}
 
-Pipeline of the work:
+Modules Pipeline used to extract gestural informations:
 
 \png{pipeline}{Pipeline of work components}
 
@@ -172,20 +165,26 @@ Moreover, the corresponding transformation is linear \cite{skinColorSeg}.
 \hline
 \textbf{Space} & BGR & HSV & YCrCb & CIE Lab\\
 \hline
- & R>95, G>40, B>20, & H[0.4 .. 0.7] & Cb[77 .. 127] & C[0 .. 65] \\
-\textbf{Param.} & Max\{R,G,B\}-Min\{R,G,B\} < 15 & S[0.15 .. 0.75] & Cr[133 .. 173] & I[0 .. 14] \\
- & abs(R-G) > 15, R > G, R>B & V[0.35 .. 0.95] & & \\
+ & R\textgreater 95, G\textgreater 40, B\textgreater 20, & H[0.4 .. 0.7] & Cb[77 .. 127] & C[0 .. 65] \\
+\textbf{Param.} & Max\{R,G,B\}-Min\{R,G,B\}\textless 15 & S[0.15 .. 0.75] & Cr[133 .. 173] & I[0 .. 14] \\
+ & abs(R-G)\textgreater 15, R\textgreater G, R\textgreater B & V[0.35 .. 0.95] & & \\
 \hline
 \end{tabular}
 \end{center}
 
 \subsection{Input Filtering}
-During the next step, a morphological kernel is applied to smooth the results, this is necessary
-to clean the image from isolated pixels and holes inside skin zones.
+During this step, a morphological kernel is applied to smooth the results,
+this is necessary to clean the image from isolated pixels and holes inside skin
+zones.
+
+\subsection{Blobs Detection}
 Each blob is labeled in linear time using the algorithm described in \cite{CompLabeling} , which requires 1 to 4 passes to recognize all blobs with their bounding path.
 We identify the hands and the head by a calibration focused on their first position in the screen. We identify them and add a tag to their respective blobs.
 
-\subsection{Blobs Detection}
+%Fig. Skin segmentation
+% Testing graphics
+\png{skincolor}{Skin color}
+\section{Blobs Tracking}
 After having the hand and head blobs identified, an efficient tracking method based on the occlusion is used. It re-triggers a phase of calibration when losing the logic of tracking.
 A bounding box distant measure similar to that found in the paper \cite{app06} ("distantBlobTrack"). A distance matrix is also used ('Proximity matrix calculation and "used blob" list initialization') like the one explained in the paper. 
 \ignore{
@@ -197,17 +196,8 @@ When the matrix of distance is set up, there are some loops:
 }
 To better handle blobs, the bounding path of the blobs is simplified to a set of few points when needed. This is used to identify picks for the counter mode.
 
-%Fig. Skin segmentation
-% Testing graphics
-\png{skincolor}{Skin color}
-
-\ignore{
-\section{Simplified gesture generation}
-Using these blocks we are able to perturb
-}
-
 \section{Gestural informations and Recognition modes}
-The output of this video processing is the input of the recognition module, which is based on the blob location on the screen. Four different modes are defined according to the hand locations. The switch between them is based on the following grammar:
+The output of the video processing is the input of the recognition module, which is based on the blob location on the screen. Four different modes are defined according to the hand locations. The switch between them is based on the following grammar:
 
 1. The movement mode:
 it is activated when two hands are close to each other, so that the user selects between 4 directions. This mode can be used as input for games to select between the directions.
@@ -245,22 +235,40 @@ The gestures in such environment, and specially for children game scenario,
 are made for a short period of time, and doesn't require a good usability,
 even if we can recognize gestures in real-time.
 
-The Naturalness of gestures is supported by the analysis of gestures to be
+The Naturalness of gestures is supported by the analysis of those to be
 supported and the choice of gesticulation.
-Gesticulation are the most common gestures, so they inherit from this their
+Gesticulation are the most common ones, so they inherit from this their
 ability to be produced with less complication.
 
--- to be extended --
+Emblems gestures which englobe commands, are choisen to be produced in more
+difficult positions to allow easy descrimination from gesticulations.
+
+Spacial gestural interactions always lack from the feedback for the interaction.
+This affects also the usability because the user can no more be guided in space
+as he was with surface movement or simple physical joysticks.
 
 \section{System integration of this interaction and future work}
---
 
+Our system support gestural interaction at the moment but other multimodal ways
+to fine tune the input and give the user feedback are possible.
+These possible evolution of the system are possible:
+
+\begin{description}
+ \item[Facial Recognition]: our system don't take care of the facial expressions
+recogntions. A future support in this area can be added for more reactiveness in
+pupil's games.
+ \item[Voice Recognition]: To speed up commands handling, we can use short voice
+keywords either to move from one mode to another, or to select object.
+ \item[Haptic feedback]: A special wearable vest can be used to allow more
+reactiveness with the user. But this area still lacking innovation because the
+haptic feedback is by area and not continue.
+\end{description}
+
+\ignore{
 Gesture + facial recog.
 Voice recognition
 Haptic 
 --
-
-\ignore{
 Naturalness came from the analysis of gestures used in talk shows.
 (gestures used many times means nature gestures)
 Reverse thinking.
