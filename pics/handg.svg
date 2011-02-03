@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.0 r9654"
-   sodipodi:docname="gest.svg">
+   sodipodi:docname="handg.svg">
   <defs
      id="defs4">
     <marker
@@ -105,14 +105,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="596.18854"
-     inkscape:cy="844.42853"
+     inkscape:zoom="0.7"
+     inkscape:cx="419.64198"
+     inkscape:cy="720.33272"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1280"
-     inkscape:window-height="745"
+     inkscape:window-height="746"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1" />
@@ -134,7 +134,10 @@
      id="layer1">
     <g
        id="g5289"
-       transform="matrix(2.7478216,0,0,2.7478216,-1753.7456,-711.53288)">
+       transform="matrix(2.7478216,0,0,2.7478216,-1753.7456,-711.53288)"
+       inkscape:export-filename="/home/boulabiar/Documents/hciiP/hci2011/pics/handg.png"
+       inkscape:export-xdpi="129.26872"
+       inkscape:export-ydpi="129.26872">
       <path
          sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
          inkscape:connector-curvature="0"
@@ -317,7 +320,10 @@
     </g>
     <g
        id="g4941"
-       transform="matrix(2.7478216,0,0,2.7478216,-1889.6646,-1030.3393)">
+       transform="matrix(2.7478216,0,0,2.7478216,-1889.6646,-1030.3393)"
+       inkscape:export-filename="/home/boulabiar/Documents/hciiP/hci2011/pics/handg.png"
+       inkscape:export-xdpi="129.26872"
+       inkscape:export-ydpi="129.26872">
       <path
          sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
          inkscape:connector-curvature="0"
@@ -376,7 +382,10 @@
     </g>
     <g
        id="g4964"
-       transform="matrix(2.7478216,0,0,2.7478216,-1936.7701,-993.83376)">
+       transform="matrix(2.7478216,0,0,2.7478216,-1936.7701,-993.83376)"
+       inkscape:export-filename="/home/boulabiar/Documents/hciiP/hci2011/pics/handg.png"
+       inkscape:export-xdpi="129.26872"
+       inkscape:export-ydpi="129.26872">
       <rect
          y="388.87558"
          x="932.67755"
@@ -457,7 +466,10 @@
     </g>
     <g
        id="g4917"
-       transform="matrix(2.7478216,0,0,2.7478216,-1962.1528,-998.5377)">
+       transform="matrix(2.7478216,0,0,2.7478216,-1962.1528,-998.5377)"
+       inkscape:export-filename="/home/boulabiar/Documents/hciiP/hci2011/pics/handg.png"
+       inkscape:export-xdpi="129.26872"
+       inkscape:export-ydpi="129.26872">
       <path
          sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
          inkscape:connector-curvature="0"
@@ -495,5 +507,65 @@
            style="fill:#ff2a2a" />
       </g>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:20.82494736px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="157.58826"
+       y="208.13193"
+       id="text3107"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/boulabiar/Documents/hciiP/hci2011/pics/handg.png"
+       inkscape:export-xdpi="129.26872"
+       inkscape:export-ydpi="129.26872"><tspan
+         sodipodi:role="line"
+         id="tspan3109"
+         x="157.58826"
+         y="208.13193"
+         style="font-size:35.68478775px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Georgia;-inkscape-font-specification:Georgia">1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20.82494736px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="309.66776"
+       y="214.49176"
+       id="text3107-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/boulabiar/Documents/hciiP/hci2011/pics/handg.png"
+       inkscape:export-xdpi="129.26872"
+       inkscape:export-ydpi="129.26872"><tspan
+         sodipodi:role="line"
+         id="tspan3109-8"
+         x="309.66776"
+         y="214.49176"
+         style="font-size:35.68478775px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Georgia;-inkscape-font-specification:Georgia">2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20.82494736px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="479.66776"
+       y="208.13193"
+       id="text3107-3"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/boulabiar/Documents/hciiP/hci2011/pics/handg.png"
+       inkscape:export-xdpi="129.26872"
+       inkscape:export-ydpi="129.26872"><tspan
+         sodipodi:role="line"
+         id="tspan3109-9"
+         x="479.66776"
+         y="208.13193"
+         style="font-size:35.68478775px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Georgia;-inkscape-font-specification:Georgia">3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20.82494736px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="642.38202"
+       y="208.13193"
+       id="text3107-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/boulabiar/Documents/hciiP/hci2011/pics/handg.png"
+       inkscape:export-xdpi="129.26872"
+       inkscape:export-ydpi="129.26872"><tspan
+         sodipodi:role="line"
+         id="tspan3109-1"
+         x="642.38202"
+         y="208.13193"
+         style="font-size:35.68478775px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Georgia;-inkscape-font-specification:Georgia">4</tspan></text>
   </g>
 </svg>
