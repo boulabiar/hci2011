@@ -55,17 +55,28 @@ TV broadcast, ubiquitous computing}
 %
 
 \section{Introduction}
-HCI research focuses more attention than before on enhancing the user experience regarding human-display interaction in order to interact more naturally without the need of clicking on buttons and touching screens. However, in everyday life interaction with home devices having embedded computational power, such as interactive TVs, one does not make benefit of these new interaction paradigms yet. 
+HCI research focuses more attention than before on enhancing the user experience
+regarding human-display interaction in order to interact more naturally without
+the need of clicking on buttons and touching screens. However, in everyday life
+interaction with home devices having embedded computational power, such as
+interactive TVs, one does not make benefit of these new interaction paradigms yet. 
 
-We present in this paper an approach that could allow the detection and the interpretation of gestures of a TV spectator from a simple and low cost camera. 
-%The final objective of this study is to control the animations of an avatar that should be inserted within a TV show beside the presenter or actor [RevTV].
-One major scenario that we rely on, corresponds to educational games where a pupil
-controls his/her avatar in a program led by a ``real'' TV animator.
+We present in this paper an approach that could allow the detection and the
+interpretation of gestures of a TV spectator from a simple and low cost camera. 
+RevTV is the name of the French project for adding new interaction techniques
+to TVs to allow the inclusion of the telespectator.
+%The final objective of this study is to control the animations of an avatar
+%that should be inserted within a TV show beside the presenter or actor [RevTV].
+Its major scenario which we rely on, corresponds to educational games where a
+pupil controls his/her avatar in a program led by a ``real'' TV animator.
 This kind of scenarios needs to be able to manage commands interaction
 like pointing, selecting and moving as well as natural gesture animation.
 
 
 \section{Gesture Semantics}
+Gestures do not come alone, they are combined with speech, or with cognitive
+activity. We study in this part the sources of gestures and the relation between
+them and other activities.
 First sources of gestures can come from the interaction between two human in a
 discussion, these type of gestures are used to add more precision on the details
 and they are made by the same auditory areas of the cortex \cite{SymbolicGest}.
@@ -133,32 +144,39 @@ According to our scenario of use in the context of Interacrive TV.
 
 \png{handg}{Family of supported gestures}
 
-Figure\ref{handg} shows our supported gestures. We provide a movement mode
-used to select directions, then a command mode, then a hand fingers recognition,
+Fig.\ref{handg} shows our supported gestures. We provide a movement mode
+used to select the 4 directions, then a multitouch nthen a command mode, then a hand fingers recognition,
 and, finally, a cursor movement mode.
-\pagebreak 
-We have selected to support 4 basic gestures to be extended depending on the
-context fulfilling the requirements of a benchmark scenario.
+%\pagebreak 
+We have selected 4 basic gestures modes to be supported in our system as a first step.
+Then to be extended depending on the context fulfilling the requirements
+of our scenario.
 
 \section{Technical Work}
 
-Modules Pipeline used to extract gestural informations:
+In the figure \ref{pipeline}, we show the pipeline of the modules used to
+extract gestural informations. Each part is described in details in the next
+subsections.
 
 \png{pipeline}{Pipeline of work components}
+
 
 \subsection{Used Materials}
 We have chosen a low-cost camera for our work that can be integrated with other components in the future.
 The PS3Eye camera matched our expectations with a 640x480 resolution combined with a 60 frames-per-second capability.
 This camera costs about 40\$, which is a reasonable price for a potential market deployment.
 
-\ignore{
-} 
-
 \subsection{Color Transformations}
-The video processing is based on several modules. First, a basic but adaptive skin color segmentation of a large interval of human skin varieties is performed \cite{skinColorSeg}.
+The video processing is based on several modules.
+First, a basic but adaptive skin color segmentation of a large interval of human skin varieties is performed \cite{skinColorSeg}.
 We also use a histogram equalisation technique to better enlarge the colors to all the space available.
-Then we transform the color space from BGR to YCrCb, as it’s the most adapted one to skin segmentation
+Then we transform the color space from BGR, which come from the camera to YCrCb,
+as it’s the most adapted one to skin segmentation
 Moreover, the corresponding transformation is linear \cite{skinColorSeg}.
+
+Other color spaces like HSV or CIE-Lab can be used for skin color segmentation,
+but the transformation from BGR either takes more time or needs more parameters
+in the next step.
 
 \begin{center}
 \begin{tabular}{|l|c|c|c|c|}
@@ -173,54 +191,65 @@ Moreover, the corresponding transformation is linear \cite{skinColorSeg}.
 \end{center}
 
 \subsection{Input Filtering}
-During this step, a morphological kernel is applied to smooth the results,
+During this step, a 5x5 opening morphological kernel \cite{morphologicalAnalysis} is applied to smooth the results,
 this is necessary to clean the image from isolated pixels and holes inside skin
 zones.
 
 \subsection{Blobs Detection}
-Each blob is labeled in linear time using the algorithm described in \cite{CompLabeling} , which requires 1 to 4 passes to recognize all blobs with their bounding path.
-We identify the hands and the head by a calibration focused on their first position in the screen. We identify them and add a tag to their respective blobs.
+Each blob is labeled in linear time using the contour tracing technique with
+the linear-time component-labeling algorithm \cite{CompLabeling},
+which requires 1 to 4 passes to recognize all blobs with their bounding contour.
+We identify the hands and the head by a calibration focused on their first
+position in the screen. We identify them and add a tag to their respective blobs.
 
 %Fig. Skin segmentation
 % Testing graphics
 \png{skincolor}{Skin color}
 \section{Blobs Tracking}
-After having the hand and head blobs identified, an efficient tracking method based on the occlusion is used. It re-triggers a phase of calibration when losing the logic of tracking.
-A bounding box distant measure similar to that found in the paper \cite{app06} ("distantBlobTrack"). A distance matrix is also used ('Proximity matrix calculation and "used blob" list initialization') like the one explained in the paper. 
-\ignore{
-When the matrix of distance is set up, there are some loops:
-* A loop for detect inactive tracks: those tracks with no blobs near.
-* Detect and create new tracks: those blobs without a track near.
-* A loop to assign blobs to tracks. It makes clusters with blobs that are close and assign them to a track. In this step some tracks could merge in one.
-* At the end, all inactive tracks are checked to delete the old ones.
-}
-To better handle blobs, the bounding path of the blobs is simplified to a set of few points when needed. This is used to identify picks for the counter mode.
+After having the hands and head blobs identified, an efficient
+tracking method based on the apparence model for occlusion handling\cite{app06}.
+We have used the cvblob implementation \cite{cvblob} for that algorithm which 
+stores the mesures of bounding boxes distance and provide tracks instead of just blobs.  %distantBlobTrack.
+
+When the matrix of distance is set up, the coming loops
+are executed to handle blobs changes:
+\begin{itemize}
+ \item A loop to detect inactive tracks: those tracks with no blobs near.
+ \item Detect and create new tracks: those blobs without a track near.
+ \item A loop to assign blobs to tracks. It makes clusters with blobs that are close and assign them to a track.
+In this step some tracks could merge in one.
+ \item A last loop which check all inactive tracks to delete the old ones.
+\end{itemize}
+
+To better handle blobs, the bounding path of the blobs
+is simplified to a set of few points when needed.
+This is used to identify picks for the counter mode.
 
 \section{Gestural informations and Recognition modes}
-The output of the video processing is the input of the recognition module, which is based on the blob location on the screen. Four different modes are defined according to the hand locations. The switch between them is based on the following grammar:
-
-1. The movement mode:
-it is activated when two hands are close to each other, so that the user selects between 4 directions. This mode can be used as input for games to select between the directions.
-
-2. The mouse mode:
-it is used to control a cursor to select something in an arbitrary place on the screen. With this mode, we only get the input from a sub zone in the screen and map it to the full screen. We use it in a similar way to a computer touchpad.
+The output of the video processing is the input of the recognition module,
+which is based on the track location on the screen.
+Four different modes are defined according to the hand locations. The switch between them is based on the following grammar:
+\begin{description}
+ \item[The movement mode:] it is activated when two hands are close to each other, so that the user selects between 4 directions. This mode can be used as input for games to select between the directions.
+ \item[The multi-touch mode:] where we consider the similarities between 2D gestures in a tactile multi-touch context and gestures in the 3D space. To do so, we consider the hands blobs in a manner similar to that of two finger tips in the input of a multi-touch device. Based on that, we can recognize well known multi-touch gestures, such as Drag, Pinch/Zoom and Rotate but applied on our case.
+ \item[The counter mode:] counts the number of fingers in a preselected hand (the left and right hand are automatically discriminated) by counting the peaks in the simplified contour of the blob. This mode can again be used in games for kids.
+ \item[The mouse mode:] it is used to control a cursor to select something in an arbitrary place on the screen. With this mode, we only get the input from a sub zone in the screen and map it to the full screen. We use it in a similar way to a computer touchpad.
 The user can validate clicks using a tempo on another zone.
+\end{description}
 
-3. The counter mode: counts the number of fingers in a preselected hand (the left and right hand are automatically discriminated) by counting the peaks in the simplified contour of the blob. This mode can again be used in games for kids.
-
-4. The multi-touch mode, where we consider the similarities between 2D gestures in a tactile multi-touch context and gestures in the 3D space. To do so, we consider the hands blobs in a manner similar to that of two finger tips in the input of a multi-touch device. Based on that, we can recognize well known multi-touch gestures, such as Drag, Pinch/Zoom and Rotate but applied on our case.
-
+A phase of calibration is triggered when the logic of tracking is lost or damaged.
 We have used four modes in a first core with the possibility to add more sub-gestures in the future.
 This core will be used to control a children game having to select, choose, and answer basic questions.
 We have stick to that scenario to produce these gestures. 
 
--- add screenshot of the work --
 %\pngl{point}{simplify}{List of modes}
 
 \begin{figure}[!htb]
 \centering
   \includegraphics[width=0.45\textwidth]{./pics/point.png}
   \includegraphics[width=0.4\textwidth]{./pics/simplify.png}
+  \includegraphics[width=0.46\textwidth]{./pics/fingers.png}
+  \includegraphics[width=0.46\textwidth]{./pics/move.png}
   \caption{List of modes}
 %  \label{fig:Gestes}
 \end{figure}
@@ -228,9 +257,8 @@ We have stick to that scenario to produce these gestures.
 
 \section{Usability and Naturalness in an ubiquitous environment}
 
-The usability of our system should be compared to other system in an ubiquitous
-environment. In such case, we don't have a full PC where we need to work as in
-the front of a computer, but in the front of a TV.
+The usability of our system should be compared to other systems in an ubiquitous
+environment. In our case, we have a TV instead of a PC.
 The gestures in such environment, and specially for children game scenario,
 are made for a short period of time, and doesn't require a good usability,
 even if we can recognize gestures in real-time.
