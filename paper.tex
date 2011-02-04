@@ -40,12 +40,13 @@ VALORIA, University of Bretagne-Sud, France
 
 \begin{abstract}
 The search for new simplified interaction techniques is 
-mainly motiviated by the improvements of 
+mainly motivated by the improvements of 
 the communication with interactive devices.
 In this paper, we present an interactive TVs module capable
 of recognizing human gestures through the PS3Eye low-cost camera.
 We recognize gestures by the tracking of human skin blobs and analyzing the 
-corresponding movements. It provides means to control a TV in an ubiquitous computing environment.
+corresponding movements. It provides means to control a TV in an ubiquitous
+computing environment.
 We also present a new free gestures icons library created to allow easy
 representation and diagramming.
 %after an analysis of TV's Talk-shows.
@@ -57,8 +58,10 @@ TV broadcast, ubiquitous computing}
 
 \section{Introduction}
 HCI research focuses more attention than before on enhancing the user
-experience regarding human-display interaction in order to interact
-more naturally without the need of clicking on buttons and touching screens.
+experience regarding human-display interaction.
+This area of research and specifically gesture, work on making interact natural
+without the need of clicking on buttons and touching screens with first systems
+since the 1980's \cite{Bolt1980}, \cite{Pavlovic97visinter}, \cite{Derpanisreview}.
 However, in everyday life, interaction with home devices having
 embedded computational power, such as interactive TVs,
 one does not make benefit from these new interaction paradigms yet. 
@@ -110,14 +113,19 @@ This semantics can be divided into two parts:
 \ignore{
 Gesture recognition got the attention of HCI researchers in order to find better
 ways to talk to the computer. The first one was the Hand Gestural Cursor
-(Put-That-There[]) aiming to the simplification of the means of communication
+(Put-That-There) aiming to the simplification of the means of communication
 between human and the machine.
 Since then, the gesture definition included more techniques and got applied on
 the 2D recognition which is the multi-touch gestures.
 }
 
 \subsection{Gestures taxonomies}
-A rapid look the possible gestures human can perform \cite{Gesturecraft}, lead to the conclusion that the amount of possibilities is tremoundous. Nonetheless, the gestures can be classified according to various criteria. Here, we consider a taxonomy based on the context of the gestures as well as on their types:
+A rapid look the possible gestures human can perform \cite{Gesturecraft},
+lead to the conclusion that the amount of possibilities is tremendous.
+Nonetheless, the gestures can be classified according to various criteria not
+only to simplify their recognition, but also to allow their reproducing on an
+avatar to putting tags on them for future analysis\cite{gestureRecreation}.
+Here, we consider a taxonomy based on the context of the gestures as well as on their types:
 %%%%%%%
 %By looking at the possible gestures human can generate \cite{Gesturecraft}, we
 %get a huge amount of possibilities which depend on the context and on the type.
@@ -132,7 +140,7 @@ A rapid look the possible gestures human can perform \cite{Gesturecraft}, lead t
 \end{description}}
 %Gesture and Thoughts, page 18
 According to McNail \cite{gestureThought}, it is possible and useful to
-distinguish between these gestures and a possbile taxonomy can provide us these
+distinguish between these gestures and a possible taxonomy can provide us these
 types:
 \begin{description}
  \item[Gesticulation] is a motion that embodies a meaning reliable to the
@@ -146,7 +154,8 @@ finger and thumb tips touching, other fingers extended) for ``OK.''
 narrative line, with a story to tell, produced without speech.
 \end{description}
 
-In our work, we focalize on emblems commands and gesticulations, as both of them are of prime importance for the scenario under consideration.
+In our work, we focalize on emblems commands and gesticulations, as both of them
+are of prime importance for the scenario under consideration.
 %We have chosen to analyze gesticulations as they are the most frequent.
 %, and project them on the technical taxonomies.
 %And we have also made our own extraction from Talk-Shows.
@@ -154,14 +163,15 @@ In our work, we focalize on emblems commands and gesticulations, as both of them
 
 \subsection{Gestures Library}
 
-% Il faut rédiger complétement cette partie... C'est pas compréhensible, et il n'y a pas de verbe dans la seconde phrase.
+% Il faut rédiger complétement cette partie...
+%C'est pas compréhensible, et il n'y a pas de verbe dans la seconde phrase.
 In order to identify relevant gestures we have analyzed some talk-shows in order
 to extract most frequent gestures being performed.
-According to our scenario of use in the context of Interacrive TV.
+According to our scenario of use in the context of Interactive TV.
 %and defining a benchmark scenario.
 %We have tried to target the following kinds of gestures in a first step.
 
-\png{handg}{Family of supported gestures}
+\png{handg}{Family of supported gestures represented using the free gestures icons library from https://github.com/boulabiar/ishara }
 
 Figure\ref{handg} shows our supported gestures. We provide a movement mode
 used to select the 4 directions, then a multitouch, then a command mode, then a hand fingers recognition,
@@ -282,12 +292,14 @@ are made for a short period of time, and doesn't require a good usability,
 even if we can recognize gestures in real-time.
 
 The Naturalness of gestures is supported by the analysis of those to be
-supported and the choice of gesticulation.
-Gesticulation are the most common ones, so they inherit from this their
+supported and the preference of gesticulations.
+Gesticulations are the most common gestures, so they inherit from this their
 ability to be produced with less complication.
 
-Emblems gestures which englobe commands, are choisen to be produced in more
-difficult positions to allow easy descrimination from gesticulations.
+Emblems gestures which englobe commands, are chosen to be produced in more
+difficult positions to allow easy discrimination from gesticulations.
+Even with these extractions, the naturalness aspect of the gestural interaction
+itself are still objected.  \cite{naturalNorman2010}
 
 Spacial gestural interactions always lack from the feedback for the interaction.
 This affects also the usability because the user can no more be guided in space
@@ -295,8 +307,9 @@ as he was with surface movement or simple physical joysticks.
 
 \section{System integration of this interaction and future work}
 
-Our system support gestural interaction at the moment but other multimodal ways
-to fine tune the input and give the user feedback are possible.
+Our system support gestural interaction at the moment but the integration of
+other multimodal ways are possible to fine tune the input and give the user
+feedback.
 These possible evolution of the system are possible:
 
 \begin{description}
