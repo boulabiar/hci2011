@@ -18,9 +18,9 @@
 
 \begin{document}
 
-\frontmatter          % for the preliminaries
-\pagestyle{headings}  % switches on printing of running heads
-\mainmatter              % start of the contributions
+\frontmatter % for the preliminaries
+\pagestyle{empty} % switches on printing of running heads
+\mainmatter % start of the contributions
 %
 \title{A Low-cost Natural Interaction System based on a Camera Hand-Gestures Recognizer}
 \author{Mohamed-Ikbel Boulabiar\inst{1} \and Thomas Burger\inst{2}
@@ -39,12 +39,12 @@ VALORIA, University of Bretagne-Sud, France
 \maketitle
 
 \begin{abstract}
-The search for new simplified interaction techniques is 
-mainly motivated by the improvements of 
+The search for new simplified interaction techniques is
+mainly motivated by the improvements of
 the communication with interactive devices.
 In this paper, we present an interactive TVs module capable
 of recognizing human gestures through the PS3Eye low-cost camera.
-We recognize gestures by the tracking of human skin blobs and analyzing the 
+We recognize gestures by the tracking of human skin blobs and analyzing the
 corresponding movements. It provides means to control a TV in an ubiquitous
 computing environment.
 We also present a new free gestures icons library created to allow easy
@@ -59,56 +59,46 @@ TV broadcast, ubiquitous computing}
 \section{Introduction}
 HCI research focuses more attention than before on enhancing the user
 experience regarding human-display interaction.
-This area of research and specifically gesture, work on making interact natural
-without the need of clicking on buttons and touching screens with first systems
-since the 1980's \cite{Bolt1980}, \cite{Pavlovic97visinter}, \cite{Derpanisreview}.
-However, in everyday life, interaction with home devices having
-embedded computational power, such as interactive TVs,
-one does not make benefit from these new interaction paradigms yet. 
+This area of research focus on making interaction more natural, so that it is not necessary to click on buttons and to touch screens. To do so, automatic gesture recognition is an interesting paradigm \cite{Bolt1980}, \cite{Pavlovic97visinter}, \cite{Derpanisreview}.
+However, in everyday life, for interaction with home devices having
+embedded computational power, such as interactive TVs, one does not make benefit from these new interaction paradigms yet.
 
-We present in this paper an approach that could allow the detection and the
-interpretation of gestures of a TV spectator from a simple and low cost camera. 
-RevTV is the name of the French project for adding new interaction techniques
-to TVs to allow the inclusion of the telespectator.
-
-The final objective of this study is to control the animations of an avatar
+We present in this paper an approach that allows the detection and the
+interpretation of gestures of a TV spectator from a simple and low cost camera. this work takes place in the context of the French FUI\footnote{Fond Unique Interministeriel} Project RevTV,  the aim of which is to add new interaction techniques, sos that telespectators take activaly part to the TV broadcast.
+The final objective of this project is to control the animations of an avatar
 that should be inserted within a TV show beside the presenter or actor.
-One major scenario that we rely on, corresponds to some educational game where a pupil
-controls his/her avatar which interact in a forecast program led by a ``real'' TV animator.
-During such kind of scenarios, commands interaction
-like pointing, selecting and moving, as well as natural gesture animation, are required.
+By now, the major scenario that we rely on, corresponds to some educational game where a pupil
+controls her or his avatar which interacts in a broadcast program led by a ``real'' TV animator.
+During such kind of scenarios, commands interaction like pointing, selecting and moving, as well as natural gesture animation, are required.
 
-% Il faut rajouter une description du projet Rev-TV
-%Le dernier paragraphe n'est pas une description ?
+The paper is organized as following.
+Section 2 presents the study held on gestures
+semantics, sources, and taxonomies and include the presentation of the free
+icons library created and used.
+Section 3 shows the technical details of handling the camera input for gestures recognition.
+Section 4 shows the modes where the gestural informations generated are used
+with some screenshots of the running application.
+Section 5 answers the usability and naturelness question of the use of gestures
+specially in an ubiquitous environment.
+Finally section 6 discusses the future of the work and the possible integration of
+other multimodal modules.
 
 \section{Gesture Semantics}
 Symbolic gestures, such as emblems, play an important role in human
-communication as they can fully take the place of words.
-These gestures and spoken language are processed by the same system in the human brain.
-
-Gestures do not come alone, they are combined with speech, or with cognitive
-activities which can be detected from the interaction between two human in a
-discussion, these type of gestures are used to add more precision on the details
-and they are made by the same areas of the cortex \cite{SymbolicGest}.
+communication as they can fully take the place of words. These gestures are processed by the same area of the human brain as the spoken language \cite{SymbolicGest}. Hence, these gesures do not come alone, and they are often combined with speech, or with cognitive
+activities, as they are classically used to add more precision on the details of a talk.
 
 % We study in this part the sources of gestures and the relation between
 %them and other activities.
 
-We try to extract some semantics of gestures by the analysis of the movements of
-a user explaining a story and searching for a relation between gestures and the
-part of the story being told \cite{gestureThought}.
-%The result of this is the extraction of gesticulations . 
-
-After extraction, most of gestures semantics can be divided into two parts for
+We have extracted some semantics of such type of gestures, by the analysis of the movements of
+a user explaining a story, and by searching for a relation between gestures and the
+part of the story being told \cite{gestureThought}. After extraction, most of gestures semantics can be divided into two parts for
 their possible future use as:
 \begin{description}
  \item[Animation Gestures] used to animate a virtual avatar.
  \item[Command Gestures] used to launch a specific predefined action.
 \end{description}
-%%%
-% toute cette partie me semble incompréhensible... (entre la debut de la section 2 et la début de la 2.1)
-% Je veux bien t'aider à la rédiger, mais je ne comprends pas vraiment ce que tu veux dire... 
-% Quel est ton message ?
 
 \ignore{
 Gesture recognition got the attention of HCI researchers in order to find better
@@ -139,8 +129,7 @@ Here, we consider a taxonomy based on the context of the gestures as well as on 
 \end{description}}
 %Gesture and Thoughts, page 18
 According to McNail \cite{gestureThought}, it is possible and useful to
-distinguish between these gestures and a possible taxonomy can provide us these
-types:
+distinguish between these gestures. Here follows a possible taxonomy :
 \begin{description}
  \item[Gesticulation] is a motion that embodies a meaning reliable to the
 accompanying speech. It is made chiefly with the arms and hands but is not
@@ -153,8 +142,7 @@ finger and thumb tips touching, other fingers extended) for ``OK.''
 narrative line, with a story to tell, produced without speech.
 \end{description}
 
-In our work, we focalize on emblems for commands and gesticulations, as both of
-them are of prime importance for the scenario under consideration.
+In our work, we focus on Emblems for Command Gestures, and on Gesticulations for Animation Gestures.
 %We have chosen to analyze gesticulations as they are the most frequent.
 %, and project them on the technical taxonomies.
 %And we have also made our own extraction from Talk-Shows.
@@ -165,29 +153,25 @@ them are of prime importance for the scenario under consideration.
 
 % Il faut rédiger complétement cette partie...
 %C'est pas compréhensible, et il n'y a pas de verbe dans la seconde phrase.
-In order to identify relevant gestures we have analyzed some talk-shows in order
-to extract most frequent gestures being performed.
-According to our scenario of use in the context of Interactive TV, we need
-gesture to trigger commands but also for natural interaction with the avatar.
+In order to identify relevant gestures we have analyzed some talk-shows, and we have extracted the most frequent gestures being performed.
+According to our scenario of use in the context of interactive TV (RevTV project), we need some
+gesture to trigger commands, aas well as other gestures to implement natural interaction with the avatar.
 We have created a vector based gestures icons to represent them.
-These 4 icons in the figure\ref{handg}, which are part of the ``ishara'' library,
-represent the software supported gestures in our application.
+These 4 icons, represented in figure \ref{handg}, are part of the \textbf{ishara} library \cite{ishara}.  They
+represent the gestures supported by the software of our application. We provide a movement mode, a multitouch mode, a command mode, a hand fingers recognition,
+and, finally, a cursor movement mode (see Section 5 for detailled explanation of these modes).
 %and defining a benchmark scenario.
 %We have tried to target the following kinds of gestures in a first step.
 
-\png{handg}{Family of supported gestures represented using the free gestures icons library from https://github.com/boulabiar/ishara }
+\png{handg}{Family of supported gestures represented using the free gestures icons library from \cite{ishara}}
 
-Figure\ref{handg} shows our supported gestures. We provide a movement mode
-used to select the 4 directions, then a multitouch, then a command mode, then a hand fingers recognition,
-and, finally, a cursor movement mode.
-%\pagebreak 
-We have selected 4 basic gestures modes to be supported in our system as a first step.
-Then to be extended depending on the context fulfilling the requirements
+%\pagebreak
+These five basic gestures modes are already supported in our system as a first step. They will be extended depending on the context fulfilling the requirements
 of our scenario.
 
 \section{Technical Work}
 
-In the figure \ref{pipeline}, we show the pipeline of the modules used to
+Figure \ref{pipeline} is a description of the pipeline of the modules used to
 extract gestural informations. Each part is described in details in the next
 subsections.
 
@@ -195,22 +179,20 @@ subsections.
 transformation of the camera information until getting the gestural informations
 ready to use in the scenario}
 
-\subsection{Used Materials}
-We have chosen a low-cost camera for our work that can be integrated with other components in the future.
+\subsection{Camera Input}
+We have chosen a low-cost camera that can be integrated with other components in the future.
 The PS3Eye camera matched our expectations with a 640x480 resolution combined with a 60 frames-per-second capability.
 This camera costs about 40\$, which is a reasonable price for a potential market deployment.
 
-\subsection{Color Transformations} %%%%%%%%%%%%%%%%%%%
-The video processing is based on several modules, such as illustrated in Fig ... .
+\subsection{Colors Transformations} %%%%%%%%%%%%%%%%%%%
+The video processing which depend on the OpenCV library \cite{openCVlib} is based on several modules, such as illustrated in figure \ref{pipeline}.
 First, a basic but adaptive skin color segmentation of a large interval of human skin varieties is performed \cite{skinColorSeg}.
-We also use a histogram equalisation technique to better enlarge the colors to all the space available.
+We also perform histogram equalization technique to better enlarge the colors to all the space available.
 Then we transform the color space from BGR, which come from the camera to YCrCb,
-as it is the most adapted one to skin segmentation
-Moreover, the corresponding transformation is linear \cite{skinColorSeg}, which helps computation time saving.
+as it is the most adapted one to skin segmentation. Other color spaces like HSV or CIE-Lab can be used for skin color segmentation,
+but the transformation from BGR either takes more time (the transformation we use is linear) or needs more parameters
+in the next step \cite{skinColorSeg}.
 
-Other color spaces like HSV or CIE-Lab can be used for skin color segmentation,
-but the transformation from BGR either takes more time or needs more parameters
-in the next step.
 
 \begin{center}
 \begin{tabular}{|l|c|c|c|c|}
@@ -238,17 +220,17 @@ position in the screen. We identify them and add a tag to their respective blobs
 
 \png{skincolor}{A representation of different human skin color variations}
 
-\section{Blobs Tracking}
+\subsection{Blobs Tracking}
 After having the hands and head blobs identified, an efficient
-tracking method based on the appearance model for occlusion handling\cite{app06}.
-We have used the cvblob implementation \cite{cvblob} for that algorithm which 
-stores the measures of bounding boxes distance and provide tracks instead of just blobs.  %distantBlobTrack.
+tracking method based on appearance model is used \cite{app06}. Let us note that it handles occlusion problems.
+We have used the cvblob implementation \cite{cvblob} for that algorithm which
+stores the measures of bounding boxes distance and provides tracks instead of just blobs. %distantBlobTrack.
 
-When the matrix of distance is set up, the coming loops
+Once the matrix of distance is defined, the following loops
 are executed to handle blobs changes:
 \begin{itemize}
  \item A loop to detect inactive tracks: those tracks with no blobs near.
- \item Detect and create new tracks: those blobs without a track near.
+ \item A loop to detect and create new tracks: those blobs without a track near.
  \item A loop to assign blobs to tracks. It makes clusters with blobs that are close and assign them to a track.
 In this step some tracks could merge in one.
  \item A last loop which check all inactive tracks to delete the old ones.
@@ -256,7 +238,7 @@ In this step some tracks could merge in one.
 
 To better handle blobs, the bounding path of the blobs
 is simplified to a set of few points when needed.
-This is used to identify picks for the counter mode.
+This is used to identify picks for the counter mode (see Section 5). Finally, a phase of calibration is triggered when the logic of tracking is lost or damaged.
 
 \section{Gestural informations and Recognition modes}
 The output of the video processing is the input of the recognition module,
@@ -270,10 +252,10 @@ Four different modes are defined according to the hand locations. The switch bet
 The user can validate clicks using a tempo on another zone.
 \end{description}
 
-A phase of calibration is triggered when the logic of tracking is lost or damaged.
-We have used four modes in a first core with the possibility to add more sub-gestures in the future.
-This core will be used to control a children game having to select, choose, and answer basic questions.
-We have stick to that scenario to produce these gestures. 
+% inutile : on répète ce qui a déjà été dit !
+%We have used four modes in a first core with the possibility to add more sub-gestures in the future.
+%This core will be used to control a children game having to select, choose, and answer basic questions.
+%We have stick to that scenario to produce these gestures.
 
 %\pngl{point}{simplify}{List of modes}
 
@@ -285,7 +267,7 @@ We have stick to that scenario to produce these gestures.
   \includegraphics[width=0.46\textwidth]{./pics/move.png}
   \caption{A sub-list of recognition modes showing pointing, number of hand
 fingers counting and the movement mode}
-%  \label{fig:Gestes}
+ \label{fig:Gestes}
 \end{figure}
 
 
@@ -305,14 +287,14 @@ ability to be produced with less complication.
 Emblems gestures which englobe commands, are chosen to be produced in more
 difficult positions to allow easy discrimination from gesticulations.
 Even with these extractions, the naturalness aspect of the gestural interaction
-itself are still objected.  \cite{naturalNorman2010}
+itself are still objected. \cite{naturalNorman2010}
 
-Spacial gestural interactions always lack from the feedback for the interaction.
+Spatial gestural interactions always lack from the feedback for the interaction.
 This affects also the usability because the user can no more be guided in space
 as he was with surface movement or simple physical joysticks.
 
 \section{System integration of this interaction and future work}
-Human brain perisylvian areas, identified as the core of the brain's language
+Human brain Broca's area, identified as the core of the brain's language
 system, are not in fact committed to language processing, but may function as a
 modality-independent semiotic system that plays a broader role in human
 communication, linking meaning with symbols whether these are words, gestures,
@@ -339,14 +321,20 @@ haptic feedback is by area and not continue.
 
 \section*{Conclusion}
 In this paper we have shown a proof-of-concept mechanism to recognize hand
-gestures then use them to control a TV or to take actions in a Game scenario.
-We have also freely provided a library which can be used to represent gestures
-in other scenarios.
-The evolution of our system is being discussed to add more modalities even if we
-are aware of some of the limits \cite{Oviatt99tenmyths}.
+gestures then use them to control a TV or to take actions in a Game scenario
+for pupils.
+We have also provided a free library which can be used to represent gestures
+in other scenarios and other studies.
+
+The evolution of our system could be possible in the direction of a multimodal
+environment in the case where we can be aware of the limits and myths
+\cite{Oviatt99tenmyths}.
+But this evolution is a natural choice as new devices are getting more
+computational power and the ubiquitous environment is becoming a reality.
 
 % ---- Bibliography ----
 \bibliographystyle{splncs03}
 \bibliography{paper}
 
 \end{document}
+
