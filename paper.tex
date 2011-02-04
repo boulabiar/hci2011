@@ -86,21 +86,21 @@ Symbolic gestures, such as emblems, play an important role in human
 communication as they can fully take the place of words.
 These gestures and spoken language are processed by the same system in the human brain.
 
-Results support a model in which bilateral modality-specific areas in superior and inferior temporal cortices extract salient features from vocal-auditory and gestural-visual stimuli respectively.
-However, both classes of stimuli activate a common, left-lateralized network of inferior frontal and posterior temporal regions in which symbolic gestures and spoken words may be mapped onto common, corresponding conceptual representations.
-
 Gestures do not come alone, they are combined with speech, or with cognitive
-activity. We study in this part the sources of gestures and the relation between
-them and other activities.
-First sources of gestures can come from the interaction between two human in a
+activities which can be detected from the interaction between two human in a
 discussion, these type of gestures are used to add more precision on the details
-and they are made by the same auditory areas of the cortex \cite{SymbolicGest}.
+and they are made by the same areas of the cortex \cite{SymbolicGest}.
 
-Semantics of gestures have been also studied by the analysis of the movements of
-a user explaining a story \cite{gestureThought}.
-These gestures are called gesticulations and are always accompanying a speech. 
+% We study in this part the sources of gestures and the relation between
+%them and other activities.
 
-This semantics can be divided into two parts:
+We try to extract some semantics of gestures by the analysis of the movements of
+a user explaining a story and searching for a relation between gestures and the
+part of the story being told \cite{gestureThought}.
+%The result of this is the extraction of gesticulations . 
+
+After extraction, most of gestures semantics can be divided into two parts for
+their possible future use as:
 \begin{description}
  \item[Animation Gestures] used to animate a virtual avatar.
  \item[Command Gestures] used to launch a specific predefined action.
@@ -153,12 +153,13 @@ finger and thumb tips touching, other fingers extended) for ``OK.''
 narrative line, with a story to tell, produced without speech.
 \end{description}
 
-In our work, we focalize on emblems commands and gesticulations, as both of them
-are of prime importance for the scenario under consideration.
+In our work, we focalize on emblems for commands and gesticulations, as both of
+them are of prime importance for the scenario under consideration.
 %We have chosen to analyze gesticulations as they are the most frequent.
 %, and project them on the technical taxonomies.
 %And we have also made our own extraction from Talk-Shows.
-%Nous avons choisi celle-ci, car elle correspond aux besoins que nous avons identifier dans les scenarios d'utilisation de la télé interactive
+%Nous avons choisi celle-ci, car elle correspond aux besoins que nous avons
+%identifié dans les scenarios d'utilisation de la télé interactive
 
 \subsection{Gestures Library}
 
@@ -166,7 +167,11 @@ are of prime importance for the scenario under consideration.
 %C'est pas compréhensible, et il n'y a pas de verbe dans la seconde phrase.
 In order to identify relevant gestures we have analyzed some talk-shows in order
 to extract most frequent gestures being performed.
-According to our scenario of use in the context of Interactive TV.
+According to our scenario of use in the context of Interactive TV, we need
+gesture to trigger commands but also for natural interaction with the avatar.
+We have created a vector based gestures icons to represent them.
+These 4 icons in the figure\ref{handg}, which are part of the ``ishara'' library,
+represent the software supported gestures in our application.
 %and defining a benchmark scenario.
 %We have tried to target the following kinds of gestures in a first step.
 
@@ -186,7 +191,9 @@ In the figure \ref{pipeline}, we show the pipeline of the modules used to
 extract gestural informations. Each part is described in details in the next
 subsections.
 
-\png{pipeline}{Pipeline of work components}
+\png{pipeline}{Pipeline of the work components showing the routing and
+transformation of the camera information until getting the gestural informations
+ready to use in the scenario}
 
 \subsection{Used Materials}
 We have chosen a low-cost camera for our work that can be integrated with other components in the future.
@@ -229,7 +236,7 @@ which requires 1 to 4 passes to recognize all blobs with their bounding contour.
 We identify the hands and the head by a calibration focused on their first
 position in the screen. We identify them and add a tag to their respective blobs.
 
-\png{skincolor}{Skin color}
+\png{skincolor}{A representation of different human skin color variations}
 
 \section{Blobs Tracking}
 After having the hands and head blobs identified, an efficient
@@ -257,7 +264,7 @@ which is based on the track location on the screen.
 Four different modes are defined according to the hand locations. The switch between them is based on the following grammar:
 \begin{description}
  \item[The movement mode:] it is activated when two hands are close to each other, so that the user selects between 4 directions. This mode can be used as input for games to select between the directions.
- \item[The multi-touch mode:] where we consider the similarities between 2D gestures in a tactile multi-touch context and gestures in the 3D space. To do so, we consider the hands blobs in a manner similar to that of two finger tips in the input of a multi-touch device. Based on that, we can recognize well known multi-touch gestures, such as Drag, Pinch/Zoom and Rotate but applied on our case.
+ \item[The multi-touch mode:] where we consider the similarities between 2D gestures in a tactile multi-touch context and gestures in the 3D space. To do so, we consider the hands blobs in a manner similar to that of two finger tips in the input of a multi-touch device. Based on that, we can recognize well known multi-touch gestures, such as Drag, Pinch/Zoom and Rotate with a consideration of a interaction centroid\cite{CentroidGest} but applied in our case.
  \item[The counter mode:] counts the number of fingers in a preselected hand (the left and right hand are automatically discriminated) by counting the peaks in the simplified contour of the blob. This mode can again be used in games for kids.
  \item[The mouse mode:] it is used to control a cursor to select something in an arbitrary place on the screen. With this mode, we only get the input from a sub zone in the screen and map it to the full screen. We use it in a similar way to a computer touchpad.
 The user can validate clicks using a tempo on another zone.
@@ -276,7 +283,8 @@ We have stick to that scenario to produce these gestures.
   \includegraphics[width=0.4\textwidth]{./pics/simplify.png}
   \includegraphics[width=0.46\textwidth]{./pics/fingers.png}
   \includegraphics[width=0.46\textwidth]{./pics/move.png}
-  \caption{List of modes}
+  \caption{A sub-list of recognition modes showing pointing, number of hand
+fingers counting and the movement mode}
 %  \label{fig:Gestes}
 \end{figure}
 
