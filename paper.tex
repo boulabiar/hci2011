@@ -22,7 +22,7 @@
 \pagestyle{headings}  % switches on printing of running heads
 \mainmatter              % start of the contributions
 %
-\title{A Low-cost Natural Interaction based on a Camera Hand-Gestures Recognizer}
+\title{A Low-cost Natural Interaction System based on a Camera Hand-Gestures Recognizer}
 \author{Mohamed-Ikbel Boulabiar\inst{1} \and Thomas Burger\inst{2}
 Franck Poirier\inst{3} \and Gilles Coppin\inst{1}}
 %
@@ -39,12 +39,13 @@ VALORIA, University of Bretagne-Sud, France
 \maketitle
 
 \begin{abstract}
-The search for new simplified interaction techniques is always treated as a
-manner to advance the communication with interactive devices.
-In this paper, we present our work to generate interactive TVs modules capable
+The search for new simplified interaction techniques is 
+mainly motiviated by the improvements of 
+the communication with interactive devices.
+In this paper, we present an interactive TVs module capable
 of recognizing human gestures through the PS3Eye low-cost camera.
 We recognize gestures by the tracking of human skin blobs and analyzing the 
-corresponding movements to control a TV in an ubiquitous computing environment.
+corresponding movements. It provides means to control a TV in an ubiquitous computing environment.
 We also present a new free gestures icons library created to allow easy
 representation and diagramming.
 %after an analysis of TV's Talk-shows.
@@ -55,23 +56,34 @@ TV broadcast, ubiquitous computing}
 %
 
 \section{Introduction}
-HCI research focuses more attention than before on enhancing the user experience
-regarding human-display interaction in order to interact more naturally without
-the need of clicking on buttons and touching screens. However, in everyday life
-interaction with home devices having embedded computational power, such as
-interactive TVs, one does not make benefit of these new interaction paradigms yet. 
+HCI research focuses more attention than before on enhancing the user
+experience regarding human-display interaction in order to interact
+more naturally without the need of clicking on buttons and touching screens.
+However, in everyday life, interaction with home devices having
+embedded computational power, such as interactive TVs,
+one does not make benefit from these new interaction paradigms yet. 
 
 We present in this paper an approach that could allow the detection and the
 interpretation of gestures of a TV spectator from a simple and low cost camera. 
 RevTV is the name of the French project for adding new interaction techniques
 to TVs to allow the inclusion of the telespectator.
+%Pourquoi as-tu enlevé cette phrase (ligne suivante) ? Cela me semblait une bonne introduction à la présentation du projet.
+
+%The final objective of this study is to control the animations of an avatar that should be inserted within a TV show beside the presenter or actor [RevTV].
+One major scenario that we rely on, corresponds to some educational game where a pupil
+controls his/her avatar which interact in a forecast program led by a ``real'' TV animator.
+During such kind of scenarios, commands interaction
+like pointing, selecting and moving, as well as natural gesture animation, are required.
+
+\ignore{
 %The final objective of this study is to control the animations of an avatar
 %that should be inserted within a TV show beside the presenter or actor [RevTV].
 Its major scenario which we rely on, corresponds to educational games where a
 pupil controls his/her avatar in a program led by a ``real'' TV animator.
 This kind of scenarios needs to be able to manage commands interaction
 like pointing, selecting and moving as well as natural gesture animation.
-
+}
+% Il faut rajouter une description du projet Rev-TV
 
 \section{Gesture Semantics}
 Gestures do not come alone, they are combined with speech, or with cognitive
@@ -90,7 +102,10 @@ This semantics can be divided into two parts:
  \item[Animation Gestures] used to animate a virtual avatar.
  \item[Command Gestures] used to launch a specific predefined action.
 \end{description}
-
+%%%
+% toute cette partie me semble incompréhensible... (entre la debut de la section 2 et la début de la 2.1)
+% Je veux bien t'aider à la rédiger, mais je ne comprends pas vraiment ce que tu veux dire... 
+% Quel est ton message ?
 
 \ignore{
 Gesture recognition got the attention of HCI researchers in order to find better
@@ -102,8 +117,11 @@ the 2D recognition which is the multi-touch gestures.
 }
 
 \subsection{Gestures taxonomies}
-By looking at the possible gestures human can generate \cite{Gesturecraft}, we
-get a huge amount of possibilities which depend on the context and on the type.
+A rapid look the possible gestures human can perform \cite{Gesturecraft}, lead to the conclusion that the amount of possibilities is tremoundous. Nonetheless, the gestures can be classified according to various criteria. Here, we consider a taxonomy based on the context of the gestures as well as on their types:
+%%%%%%%
+%By looking at the possible gestures human can generate \cite{Gesturecraft}, we
+%get a huge amount of possibilities which depend on the context and on the type.
+
 %So, there is a need for a taxonomy.
 %Many possible taxonomies exist according to the technical or analytical aspects:
 %In order to describe and analyse each gesture, we can rely on the following aspects:
@@ -128,7 +146,7 @@ finger and thumb tips touching, other fingers extended) for ``OK.''
 narrative line, with a story to tell, produced without speech.
 \end{description}
 
-In our work, we focalize on emblems commands and gesticulations.
+In our work, we focalize on emblems commands and gesticulations, as both of them are of prime importance for the scenario under consideration.
 %We have chosen to analyze gesticulations as they are the most frequent.
 %, and project them on the technical taxonomies.
 %And we have also made our own extraction from Talk-Shows.
@@ -136,6 +154,7 @@ In our work, we focalize on emblems commands and gesticulations.
 
 \subsection{Gestures Library}
 
+% Il faut rédiger complétement cette partie... C'est pas compréhensible, et il n'y a pas de verbe dans la seconde phrase.
 In order to identify relevant gestures we have analyzed some talk-shows in order
 to extract most frequent gestures being performed.
 According to our scenario of use in the context of Interacrive TV.
@@ -144,8 +163,8 @@ According to our scenario of use in the context of Interacrive TV.
 
 \png{handg}{Family of supported gestures}
 
-Fig.\ref{handg} shows our supported gestures. We provide a movement mode
-used to select the 4 directions, then a multitouch nthen a command mode, then a hand fingers recognition,
+Figure\ref{handg} shows our supported gestures. We provide a movement mode
+used to select the 4 directions, then a multitouch, then a command mode, then a hand fingers recognition,
 and, finally, a cursor movement mode.
 %\pagebreak 
 We have selected 4 basic gestures modes to be supported in our system as a first step.
@@ -160,19 +179,18 @@ subsections.
 
 \png{pipeline}{Pipeline of work components}
 
-
 \subsection{Used Materials}
 We have chosen a low-cost camera for our work that can be integrated with other components in the future.
 The PS3Eye camera matched our expectations with a 640x480 resolution combined with a 60 frames-per-second capability.
 This camera costs about 40\$, which is a reasonable price for a potential market deployment.
 
-\subsection{Color Transformations}
-The video processing is based on several modules.
+\subsection{Color Transformations} %%%%%%%%%%%%%%%%%%%
+The video processing is based on several modules, such as illustrated in Fig ... .
 First, a basic but adaptive skin color segmentation of a large interval of human skin varieties is performed \cite{skinColorSeg}.
 We also use a histogram equalisation technique to better enlarge the colors to all the space available.
 Then we transform the color space from BGR, which come from the camera to YCrCb,
-as it’s the most adapted one to skin segmentation
-Moreover, the corresponding transformation is linear \cite{skinColorSeg}.
+as it is the most adapted one to skin segmentation
+Moreover, the corresponding transformation is linear \cite{skinColorSeg}, which helps computation time saving.
 
 Other color spaces like HSV or CIE-Lab can be used for skin color segmentation,
 but the transformation from BGR either takes more time or needs more parameters
@@ -191,8 +209,8 @@ in the next step.
 \end{center}
 
 \subsection{Input Filtering}
-During this step, a 5x5 opening morphological kernel \cite{morphologicalAnalysis} is applied to smooth the results,
-this is necessary to clean the image from isolated pixels and holes inside skin
+During this step, a 5x5 opening morphological kernel \cite{morphologicalAnalysis} is applied to smooth the results.
+Practically, it cleans the image from isolated pixels and holes inside skin
 zones.
 
 \subsection{Blobs Detection}
