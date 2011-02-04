@@ -70,25 +70,25 @@ We present in this paper an approach that could allow the detection and the
 interpretation of gestures of a TV spectator from a simple and low cost camera. 
 RevTV is the name of the French project for adding new interaction techniques
 to TVs to allow the inclusion of the telespectator.
-%Pourquoi as-tu enlevé cette phrase (ligne suivante) ? Cela me semblait une bonne introduction à la présentation du projet.
 
-%The final objective of this study is to control the animations of an avatar that should be inserted within a TV show beside the presenter or actor [RevTV].
+The final objective of this study is to control the animations of an avatar
+that should be inserted within a TV show beside the presenter or actor.
 One major scenario that we rely on, corresponds to some educational game where a pupil
 controls his/her avatar which interact in a forecast program led by a ``real'' TV animator.
 During such kind of scenarios, commands interaction
 like pointing, selecting and moving, as well as natural gesture animation, are required.
 
-\ignore{
-%The final objective of this study is to control the animations of an avatar
-%that should be inserted within a TV show beside the presenter or actor [RevTV].
-Its major scenario which we rely on, corresponds to educational games where a
-pupil controls his/her avatar in a program led by a ``real'' TV animator.
-This kind of scenarios needs to be able to manage commands interaction
-like pointing, selecting and moving as well as natural gesture animation.
-}
 % Il faut rajouter une description du projet Rev-TV
+%Le dernier paragraphe n'est pas une description ?
 
 \section{Gesture Semantics}
+Symbolic gestures, such as emblems, play an important role in human
+communication as they can fully take the place of words.
+These gestures and spoken language are processed by the same system in the human brain.
+
+Results support a model in which bilateral modality-specific areas in superior and inferior temporal cortices extract salient features from vocal-auditory and gestural-visual stimuli respectively.
+However, both classes of stimuli activate a common, left-lateralized network of inferior frontal and posterior temporal regions in which symbolic gestures and spoken words may be mapped onto common, corresponding conceptual representations.
+
 Gestures do not come alone, they are combined with speech, or with cognitive
 activity. We study in this part the sources of gestures and the relation between
 them and other activities.
@@ -129,7 +129,6 @@ Here, we consider a taxonomy based on the context of the gestures as well as on 
 %%%%%%%
 %By looking at the possible gestures human can generate \cite{Gesturecraft}, we
 %get a huge amount of possibilities which depend on the context and on the type.
-
 %So, there is a need for a taxonomy.
 %Many possible taxonomies exist according to the technical or analytical aspects:
 %In order to describe and analyse each gesture, we can rely on the following aspects:
@@ -230,14 +229,13 @@ which requires 1 to 4 passes to recognize all blobs with their bounding contour.
 We identify the hands and the head by a calibration focused on their first
 position in the screen. We identify them and add a tag to their respective blobs.
 
-%Fig. Skin segmentation
-% Testing graphics
 \png{skincolor}{Skin color}
+
 \section{Blobs Tracking}
 After having the hands and head blobs identified, an efficient
-tracking method based on the apparence model for occlusion handling\cite{app06}.
+tracking method based on the appearance model for occlusion handling\cite{app06}.
 We have used the cvblob implementation \cite{cvblob} for that algorithm which 
-stores the mesures of bounding boxes distance and provide tracks instead of just blobs.  %distantBlobTrack.
+stores the measures of bounding boxes distance and provide tracks instead of just blobs.  %distantBlobTrack.
 
 When the matrix of distance is set up, the coming loops
 are executed to handle blobs changes:
@@ -306,10 +304,18 @@ This affects also the usability because the user can no more be guided in space
 as he was with surface movement or simple physical joysticks.
 
 \section{System integration of this interaction and future work}
+Human brain perisylvian areas, identified as the core of the brain's language
+system, are not in fact committed to language processing, but may function as a
+modality-independent semiotic system that plays a broader role in human
+communication, linking meaning with symbols whether these are words, gestures,
+images, sounds, or objects \cite{SymbolicGest}.
+This natural handling of multimodal communications gives an argument to build
+recognizer taking part of most of these modalities specially to remove ambiguous
+gesture meaning decision cases.
 
-Our system support gestural interaction at the moment but the integration of
-other multimodal ways are possible to fine tune the input and give the user
-feedback.
+Our system only supports gestural interaction at the moment but the integration
+of other multimodal means are possible to fine tune the input and give the user
+better feedback.
 These possible evolution of the system are possible:
 
 \begin{description}
@@ -323,16 +329,14 @@ reactiveness with the user. But this area still lacking innovation because the
 haptic feedback is by area and not continue.
 \end{description}
 
-\ignore{
-Gesture + facial recog.
-Voice recognition
-Haptic 
---
-Naturalness came from the analysis of gestures used in talk shows.
-(gestures used many times means nature gestures)
-Reverse thinking.
-Usability in the context of RevTV ??
-}
+\section*{Conclusion}
+In this paper we have shown a proof-of-concept mechanism to recognize hand
+gestures then use them to control a TV or to take actions in a Game scenario.
+We have also freely provided a library which can be used to represent gestures
+in other scenarios.
+The evolution of our system is being discussed to add more modalities even if we
+are aware of some of the limits \cite{Oviatt99tenmyths}.
+
 % ---- Bibliography ----
 \bibliographystyle{splncs03}
 \bibliography{paper}
